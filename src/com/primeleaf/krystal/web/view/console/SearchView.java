@@ -206,9 +206,7 @@ public class SearchView extends WebView {
 				out.println("<h4>"+StringEscapeUtils.escapeHtml4(note.getNoteData())+"</h4>");
 				out.println("<h5>"+StringEscapeUtils.escapeHtml4(note.getUserName())+"</h5>");
 				out.println("<p>" + StringHelper.getFriendlyDateTime(note.getCreated())+"</p>");
-				if(note.getUserName().equalsIgnoreCase(loggedInUser.getUserName())){
-					out.println("<p><a href=\""+HTTPConstants.BASEURL+"/console/viewdocument?documentid=" + note.getDocumentId() +"\" title=\"View Document\">View Document</a></p>");
-				}
+				out.println("<p><a href=\""+HTTPConstants.BASEURL+"/console/viewdocument?documentid=" + note.getDocumentId() +"\" title=\"View Document\">View Document</a></p>");
 				out.println("</li>");
 			}
 			out.println("</ul>");
