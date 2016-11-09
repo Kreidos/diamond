@@ -61,7 +61,7 @@ public class WebPageTemplate {
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>KRYSTAL DMS  " + ServerConstants.SERVER_VERSION + " - " + ServerConstants.SERVER_EDITION + "</title>");
+		out.println("<title>" + ServerConstants.SERVER_NAME + "</title>");
 		out.println("<meta http-equiv=\"Content-Type\" content=\"text-html; charset=utf-8\">");
 		out.println("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\">");
 		out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
@@ -100,12 +100,11 @@ public class WebPageTemplate {
 		User loggedInUser = null;
 		generateHead();
 		out.println("<div id=\"wrap\">");
-		String productHomePageURL = "http://www.krystaldms.in/community";
 		if(session.getAttribute(HTTPConstants.SESSION_KRYSTAL) == null){
 			out.println("<div class=\"navbar navbar-default navbar-inverse navbar-fixed-top\" role=\"navigation\">");
 			out.println("<div class=\"container-fluid\">");
 			out.println("<div class=\"navbar-header\">");
-			out.println("<a class=\"navbar-brand\" href=\""+productHomePageURL+"\" target=\"_new\"><img src=\"/images/krystal.png\" width=\"32\" height=\"32\" align=\"left\"/>&nbsp;KRYSTAL DMS</a>");
+			out.println("<a class=\"navbar-brand\"><img src=\"/images/diamond.png\" width=\"32\" height=\"32\" align=\"left\"/></a>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -119,7 +118,7 @@ public class WebPageTemplate {
 			out.println("<span class=\"icon-bar\"></span>");
 			out.println("<span class=\"icon-bar\"></span>");
 			out.println("</button>");
-			out.println("<a class=\"navbar-brand\" href=\""+productHomePageURL+"\" target=\"_new\"><img src=\"/images/krystal.png\" width=\"28\" height=\"28\" align=\"left\"/>&nbsp;KRYSTAL DMS</a>");
+			out.println("<a class=\"navbar-brand\"><img src=\"/images/diamond.png\" width=\"32\" height=\"32\" align=\"left\"/></a>");
 			out.println("</div>");
 
 			loggedInUser = (User) session.getAttribute(HTTPConstants.SESSION_KRYSTAL);
@@ -163,8 +162,8 @@ public class WebPageTemplate {
 			out.println("<li class=\"dropdown\">");
 			out.println("<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-lg fa-question-circle fa-fw\"></i><b class=\"caret\"></b></a>");
 			out.println("<ul class=\"dropdown-menu\" role=\"menu\">");
-			out.println("<li><a href=\"http://www.krystaldms.in/resoruces/documentation/community/2015/user\" target=\"_new\"><i class=\"fa fa-book\"></i> Users Guide</a></li>");
-			out.println("<li><a href=\"http://www.krystaldms.in/resoruces/documentation/community/2015/admin\"  target=\"_new\" ><i class=\"fa fa-book\"></i> Administrators Guide</a></li>");
+			out.println("<li><a href=\"http://www.krystaldms.in/resources/documentation/community/2015/user\" target=\"_new\"><i class=\"fa fa-book\"></i> Users Guide</a></li>");
+			out.println("<li><a href=\"http://www.krystaldms.in/resources/documentation/community/2015/admin\"  target=\"_new\" ><i class=\"fa fa-book\"></i> Administrators Guide</a></li>");
 			out.println("</ul>");
 			out.println("</li>");
 			
@@ -191,9 +190,8 @@ public class WebPageTemplate {
 		out.println("</div>");//continer-fluid
 		out.println("</div>");/*wrap ends here*/
 		out.println("<div id=\"footer\">");
-		out.println("<div class=\"container-fluid\" style=\"padding:10px;\">");
-		out.println("<div class=\"pull-left\"><a href=\"http://www.primeleaf.in\" target=\"_new\"><img src=\"/images/primeleaf.jpg\"></a></div>");
-		out.println("<div class=\"text-right text-muted\" style=\"padding:10px;\"><a href=\"http://www.primeleaf.in\" target=\"_new\">&copy;  Primeleaf Consulting (P) Ltd.</a></div>");
+		out.println("<div class=\"container-fluid\" style=\"padding:2px;\">");
+		out.println("<div class=\"text-right text-muted\" style=\"padding:2px;\">&copy;  Primeleaf Consulting (P) Ltd.</div>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");

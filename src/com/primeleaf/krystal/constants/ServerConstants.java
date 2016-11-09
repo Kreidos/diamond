@@ -27,6 +27,7 @@ package com.primeleaf.krystal.constants;
 public class ServerConstants {
 	public static final String SERVER_VERSION = "2016";
 	public static final String SERVER_EDITION = "Community Edition";
+	public static final String SERVER_NAME = "Diamond DMS";
 	
 	public static final String KRYSTAL_DATABASE="KRYSTALCE";
 	public static final String KRYSTAL_DATABASEOWNER="KRYSTALDBO";
