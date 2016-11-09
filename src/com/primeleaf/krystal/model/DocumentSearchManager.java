@@ -359,7 +359,7 @@ public class DocumentSearchManager {
 					case SearchFilter.OPERATOR_BETWEEN:
 						if(IndexDefinition.INDEXTYPE_DATE.equals(searchFilter.getColumnType())){
 
-							whereClause.append("DATE("+ indexName + ") '" + new java.sql.Date(DBStringHelper.getSQLDate(filterValue1).getTime()) +" 00:00:00 " +  "' AND '" +  new java.sql.Date(DBStringHelper.getSQLDate(searchFilter.getValue2()).getTime()) +" 23:59:59 " + "'");
+							whereClause.append("DATE("+ indexName + ") BETWEEN '" + filterValue1 +  "' AND '" +  searchFilter.getValue2() + "'");
 						}else if(IndexDefinition.INDEXTYPE_NUMBER.equals(searchFilter.getColumnType())){
 							whereClause.append(" CAST(NULLIF("+ indexName + ",'') AS DECIMAL (10,2)) BETWEEN " +filterValue1+ " AND " + searchFilter.getValue2() + "");
 						}else{
