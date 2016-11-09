@@ -86,15 +86,17 @@ public class BulkDownloadAction implements Action {
 					return (new DownloadDocumentView(request,response));
 				}
 				
+				if(documentClass == null){
+					documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId());
+				}
+				
 				acl = aclManager.getACL(documentClass, loggedInUser);
 				
 				if(! acl.canDownload()){
 					request.setAttribute(HTTPConstants.REQUEST_ERROR, "Access Denied");
 					return (new DownloadDocumentView(request,response));
 				}
-				if(documentClass == null){
-					documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId());
-				}
+
 			}
 
 			byte data[] = new byte[BUFFER];
