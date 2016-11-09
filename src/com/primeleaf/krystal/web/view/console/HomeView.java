@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.constants.ServerConstants;
 import com.primeleaf.krystal.model.vo.AuditLogRecord;
 import com.primeleaf.krystal.model.vo.Bookmark;
 import com.primeleaf.krystal.model.vo.CheckedOutDocument;
@@ -298,26 +297,15 @@ public class HomeView extends WebView {
 	}
 	
 	private void printStorage(){
-		double maxSpace = ServerConstants.MAX_STORAGE;
+
 		Long usedSpace = (Long)request.getAttribute("USEDSTORAGE");
-		double percent = (usedSpace * 100 / maxSpace);
-		String cssClass = "progress-bar-primary";
-		if(percent > 70) cssClass = "progress-bar-warning";
-		if(percent > 95) cssClass = "progress-bar-danger";
-		
 		out.println("<div class=\"panel panel-default\">");
 		out.println("<div class=\"panel-heading\">");
 		out.println("<h5 class=\"\"><i class=\"fa fa-database\"></i> Storage Details</h5>");
 		out.println("</div>");
 		out.println("<div class=\"panel-body\">");
-		out.println("<p>Maximum Storage Space : <strong> "+StringHelper.formatSizeText(maxSpace)+" </strong></p><br/>");
-		out.println("<div class=\"progress\">");
-		out.println("<div class=\"progress-bar "+cssClass+"\" id=\"progressbar\" role=\"progressbar\" aria-valuenow=\""+usedSpace+"\" aria-valuemin=\"0\" aria-valuemax=\""+maxSpace+"\" style=\"width : "+percent+"%;\">");
-		out.println("<span class=\"sr-only\">"+percent+"% Complete</span>");
-		out.println("</div>");
-		out.println("</div>");
-		out.println("<p>Currently Used Storage Space : <strong>"+StringHelper.formatSizeText(usedSpace) +"</strong></p>");
-		out.println("<p>Available Storage Space : <strong>"+StringHelper.formatSizeText(maxSpace - usedSpace)  +"</strong></p>");
+
+		out.println("<p>Current Used Storage Space : <strong>"+StringHelper.formatSizeText(usedSpace) +"</strong></p>");
 		out.println("</div>");//panel-body
 		out.println("</div>");//panel
 	

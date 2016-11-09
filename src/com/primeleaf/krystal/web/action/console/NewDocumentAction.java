@@ -35,12 +35,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.validator.GenericValidator;
 
 import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.constants.ServerConstants;
 import com.primeleaf.krystal.model.AccessControlManager;
 import com.primeleaf.krystal.model.AuditLogManager;
 import com.primeleaf.krystal.model.DocumentManager;
 import com.primeleaf.krystal.model.dao.DocumentClassDAO;
-import com.primeleaf.krystal.model.dao.DocumentDAO;
 import com.primeleaf.krystal.model.vo.AuditLogRecord;
 import com.primeleaf.krystal.model.vo.DocumentClass;
 import com.primeleaf.krystal.model.vo.DocumentRevision;
@@ -145,14 +143,6 @@ public class NewDocumentAction implements Action {
 					return null;
 				}
 
-				long usedStorage = DocumentDAO.getInstance().documentSize();
-				long availableStorage = ServerConstants.MAX_STORAGE - usedStorage;
-				
-				if(file.length() > availableStorage){
-					session.setAttribute("UPLOAD_PERCENT_COMPLETE",  new Long(0));
-					session.setAttribute("UPLOAD_ERROR","Document upload failed. Storage limit exceeded.");
-					return null;
-				}
 				String indexValue="";
 				String indexName="";
 				session.setAttribute("UPLOAD_PERCENT_COMPLETE",  new Long(50));

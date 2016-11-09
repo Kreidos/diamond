@@ -86,8 +86,6 @@ public class ServerConstants {
 	public static final String FORMAT_SHORT_DATE="dd-MMM-yyyy";
 	
 	public static final String ENCRYPTION_ALGORITHM="HMACMD5";
-
-	public static final long MAX_STORAGE  = 549755813888l;
 	
 	/**
 	 * 
