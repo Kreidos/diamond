@@ -86,7 +86,7 @@ public class ServerConstants {
 	
 	public static final String ENCRYPTION_ALGORITHM="HMACMD5";
 
-	public static final long MAX_STORAGE  = 536870912l;
+	public static final long MAX_STORAGE  = 549755813888l;
 	
 	/**
 	 * 
