@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/com/primeleaf/krystal/model/vo/DocumentClass.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/action/console/OpenDocumentClassAction.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/controller/ActionFactory.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/controller/ConsoleController.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/controller/ControlPanelController.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/controller/DMSController.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/DefaultView.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/WebView.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/console/AJAXResponseView.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/console/AccessHistoryView.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/console/HomeView.java=UTF-8
+encoding//src/com/primeleaf/krystal/web/view/console/OpenDocumentClassView.java=UTF-8
