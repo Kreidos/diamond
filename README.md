@@ -7,7 +7,10 @@ Diamond DMS is a document management system forked from Krystal DMS and licensed
 * Security fixes (Notably, backdoor removal.)
 
 **Usage:**
-* Extract zip or tar.
-* run diamonddms.sh or diamonddms.bat
+* Extract zip.
+* run diamonddms.sh or diamonddms.bat.
+* Open your browser to 127.0.0.1:8080.
 
-Default user account is *ADMINSTRATOR : admin*
+*Java JRE 1.7 or higher is required.*
+
+The default user account is *ADMINISTRATOR : admin*
