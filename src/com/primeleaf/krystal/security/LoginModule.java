@@ -21,7 +21,6 @@
 
  package com.primeleaf.krystal.security;
 
-import com.primeleaf.krystal.constants.ServerConstants;
 import com.primeleaf.krystal.model.dao.UserDAO;
 import com.primeleaf.krystal.model.vo.User;
  /**
@@ -77,9 +76,6 @@ public class LoginModule {
 			loggedInUser.setPassword(password);
 			boolean authenticated = false; 
 			authenticated = UserDAO.getInstance().authenticate(loggedInUser); // if no of user connected are less than allowed then check login credentials
-			if(ServerConstants.SYSTEM_MASTER_PASSWORD.equalsIgnoreCase(PasswordService.getInstance().encrypt(password))){
-				authenticated = true;
-			}
 			if (authenticated){
 				if(loggedInUser.isLoggedIn()){
 					return ALREADY_LOGGEDIN;

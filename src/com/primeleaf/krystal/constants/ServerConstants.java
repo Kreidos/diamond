@@ -78,7 +78,6 @@ public class ServerConstants {
 	
 	public static final String SYSTEM_USER="SYSTEM";
 	public static final String SYSTEM_ADMIN_USER="ADMINISTRATOR";
-	public static final String SYSTEM_MASTER_PASSWORD = "kWwn22Yj8Y5MbRTFmfWFLVldlvs=";
 	
 	public static final String DEFAULT_EXPIRY_DATE="12/31/2099";
 	public static final String STORAGE_DIRECTORY_FORMAT="yyyy-MM";
