@@ -1,6 +1,13 @@
-# diamond
+# Diamond Document Management System
 Diamond DMS is a document management system forked from Krystal DMS and licensed under GPLv3.
 
-After using Krystal DMS for some time I ended up fixing and improving so many things that I felt others should be able to use the improved version.
+**Improvements include:**
+* No storage, usage, user count or other limits.
+* Major bugs squashed & broken features fixed.
+* Security fixes (Notably, backdoor removal.)
 
-For now this project is distributed as "source-only." It can be compiled easily with eclipse-jdt and the new jars and files copied over the base installation available at https://sourceforge.net/projects/krystaldms/. 
+**Usage:**
+* Extract zip or tar.
+* run diamonddms.sh or diamonddms.bat
+
+Default user account is *ADMINSTRATOR : admin*

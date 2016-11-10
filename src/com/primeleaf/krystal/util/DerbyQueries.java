@@ -195,7 +195,7 @@ public class DerbyQueries extends ListResourceBundle{
 			},
 			{
 				"query13","INSERT INTO USERS(USERNAME,PASSWORD,USERDESC,USEREMAIL,USERTYPE,REALNAME,HITLISTSIZE,CHECKOUTPATH,METACOLUMN,SHOWTHUMBNAIL)" +
-				" VALUES( 'ADMINISTRATOR','0DPiKuNIrrVmD8IUCuw1hQxNqZc=','DMS Administrator','rahul.kubadia@primeleaf.in','A', 'Administrator',10,'c:/temp/',511,'TRUE')"
+				" VALUES( 'ADMINISTRATOR','0DPiKuNIrrVmD8IUCuw1hQxNqZc=','DMS Administrator','administrator@built.in','A', 'Administrator',10,'c:/temp/',511,'TRUE')"
 			},
 			{
 				"query14","INSERT INTO PASSWORDHISTORY(USERID,PASSWORD) VALUES (1,'0DPiKuNIrrVmD8IUCuw1hQxNqZc=')"

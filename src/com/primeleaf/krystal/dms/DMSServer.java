@@ -78,7 +78,7 @@ public class DMSServer {
 			KRYSTAL_HOME = System.getProperty("user.dir");
 			System.setProperty("krystal.home", KRYSTAL_HOME);
 		}
-		SERVER_VERSION =   "KRYSTAL DMS " + ServerConstants.SERVER_VERSION + " - " + ServerConstants.SERVER_EDITION ;
+		SERVER_VERSION = ServerConstants.SERVER_NAME + " " + ServerConstants.SERVER_VERSION ;
 		//If shutdown file exist then delete it before starting the server
 		File f = new File(KRYSTAL_HOME + "/shutdown");
 		if (f.exists()) {

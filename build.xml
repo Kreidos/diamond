@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<project name="Primeleaf Product" default="clean" basedir=".">
+<project name="DiamondDMS" default="clean" basedir=".">
 	<property name="sourcedir" value="${basedir}/src" />
-	<property name="targetdir" value="D:\\Product Installers\\DMS Server 2016 - Community Edition\\Setup Sources" />
+	<property name="targetdir" value="build" />
 	<property name="libdir" value="${basedir}/lib/common" />
 	<property name="serverlibdir" value="${basedir}/lib" />
 	<property name="basename"   value="dmsserver.jar" />
@@ -40,6 +40,7 @@
 				<exclude name="src/" />
 				<exclude name="work/" />
 				<exclude name="data/" />
+				<exclude name="build/" />
 				<exclude name="**/CheckOutApplet.class" />
 				<exclude name="**/GenerateKrystalLicense.class" />
 				<exclude name="**/GenerateKrystalLicense.java" />
