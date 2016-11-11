@@ -7,6 +7,7 @@
 	<property name="basename"   value="dmsserver.jar" />
 	<property name="modeljarname" value="dmsmodel.jar" />
 	<property name="webjarname" value="dmsweb.jar" />
+	<property name="zipname" value="diamonddms-latest.zip" />
 	
 	<target name="build">
 		<javac srcdir="${sourcedir}" description="Build entire project"
@@ -41,6 +42,7 @@
 				<exclude name="work/" />
 				<exclude name="data/" />
 				<exclude name="build/" />
+				<exclude name="script/" />
 				<exclude name="**/CheckOutApplet.class" />
 				<exclude name="**/GenerateKrystalLicense.class" />
 				<exclude name="**/GenerateKrystalLicense.java" />
@@ -57,13 +59,33 @@
 				<exclude name="**/build.xml" />
 				<exclude name="**/Desktop.ini" />
 				<exclude name="**/Thumbs.db/" />
+				<exclude name="**/*.md" />
+				<exclude name="*.zip" />
 			</fileset>
 		</copy>
 	</target>
 
-	<target name="clean" depends="copy-resources">
+	<target name="copy-scripts" depends="copy-resources">
+		<copy todir="${targetdir}">
+			<fileset dir="./script/" />
+		</copy>
+	</target>
+
+	<target name="clean" depends="copy-scripts">
 		<delete file="${serverlibdir}/${basename}"></delete>
 		<delete file="${serverlibdir}/${modeljarname}"></delete>
 		<delete file="${serverlibdir}/${webjarname}"></delete>
 	</target>
+	
+	<target name="cleanBuildFolder">
+		<delete includeemptydirs="true">
+			<fileset dir="${targetdir}" includes="**/*" />
+		</delete>
+	</target>
+
+	<target name="doRelease" depends="cleanBuildFolder">
+		<antcall target="clean" />
+		<zip destfile="${zipname}" basedir="${targetdir}" update="true" />
+	</target>
+
 </project>
