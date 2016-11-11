@@ -15,6 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd.
  * 
+ * Portions copyright Kreidos@users.noreply.github.com, 2016
  */
 
 package com.primeleaf.krystal.dms;
@@ -22,6 +23,7 @@ package com.primeleaf.krystal.dms;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +33,7 @@ import java.util.TimerTask;
 import java.util.logging.Logger;
 
 import com.primeleaf.krystal.constants.ServerConstants;
+import com.primeleaf.krystal.model.ConnectionPoolManager;
 import com.primeleaf.krystal.model.dao.DocumentClassDAO;
 import com.primeleaf.krystal.model.dao.UserDAO;
 import com.primeleaf.krystal.model.vo.DocumentClass;
@@ -44,6 +47,7 @@ import com.primeleaf.krystal.web.WebServerManager;
  * @since 1.0
  * @comments Krystal Server initialized , started and stopped using methods in this class.
  * @see com.primeleaf.krystal.web.KrystalSession
+ * 
  */
 
 public class DMSServer {
@@ -62,6 +66,7 @@ public class DMSServer {
 		try {
 			setEnvironment();
 			configureDataStore();
+			updateDatabase();		//Checks and updates obsolete DBs, Kreidos@github, 2016
 			startWebApplications();
 			updateLoginStatus();
 			adjustDocumentCount();
@@ -150,11 +155,27 @@ public class DMSServer {
 				databaseConnection.commit();
 				databaseConnection.close();
 			}
+			
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
 
+	public void updateDatabase() throws SQLException{ //Checks and updates obsolete DBs. Kreidos@github 2016
+		kLogger.info("Checking Database...");
+		Connection databaseConnection = ConnectionPoolManager.getInstance().getConnection();
+		Statement stat = databaseConnection.createStatement();
+		try{
+			stat.execute("SELECT FILENAME FROM DOCUMENTS");
+		}catch(Exception e){
+			kLogger.info("Database Error: FILENAMES entry not found in database, creating...");
+			stat.execute("ALTER TABLE DOCUMENTS ADD COLUMN FILENAME VARCHAR (256)");
+			databaseConnection.commit();
+		}
+		databaseConnection.close();
+		kLogger.info("Database Check complete.");
+	}
+	
 	private void adjustDocumentCount(){
 		try{
 			for(DocumentClass documentClass: DocumentClassDAO.getInstance().readDocumentClasses("")){

@@ -147,8 +147,14 @@ public class RevisionManager {
 		document.setLastAccessed(new java.sql.Timestamp(lastAccessed.getTime()));
 		
 		DocumentDAO.getInstance().updateDocument(document);		
-		//get document class name 		
-		fileName =  document.getFilename() + "." + document.getExtension().toLowerCase();		
+		//get document class name 
+		
+		if(document.getFilename() == null){ //catch for old pre-1.1 files
+			fileName = "Krystal_" + document.getDocumentId() + "_Obj." + document.getExtension().toUpperCase();
+		}else {
+		fileName = document.getFilename() + "." + document.getExtension().toLowerCase();		
+		}
+			
 		// add entry to checkout table 		
 		checkedOutDocument.setClassId(document.getClassId());
 		
