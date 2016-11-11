@@ -96,7 +96,7 @@ public class DownloadDocumentAction implements Action {
 			DocumentManager documentManager = new DocumentManager();
 			document.setRevisionId(documentRevision.getRevisionId());
 			documentRevision = documentManager.retreiveDocument(document);
-			String fileName = "Krystal_" + documentRevision.getDocumentId() + "_" + documentRevision.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toUpperCase();		
+			String fileName = document.getFilename() + "." + document.getExtension().toLowerCase();		
 
 			ServletContext servletContext = request.getServletContext();
 			String targetName = "";

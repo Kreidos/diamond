@@ -71,7 +71,6 @@ public class NewDocumentAction implements Action {
 				if ( !(tempFilePath.endsWith("/") || tempFilePath.endsWith("\\")) ){
 					tempFilePath += System.getProperty("file.separator");
 				}
-				tempFilePath+=  userName+"_"+sessionid;
 
 				//variables
 				String fileName="",ext="",comments="";
@@ -117,7 +116,7 @@ public class NewDocumentAction implements Action {
 							file = new File(fileName);
 							fileName = file.getName();
 							ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
-							file=new File(tempFilePath+"."+ext);				    
+							file=new File(tempFilePath+ fileName);				    
 							fileItem.write(file);
 						}catch(Exception ex){
 							session.setAttribute("UPLOAD_ERROR",ex.getLocalizedMessage());

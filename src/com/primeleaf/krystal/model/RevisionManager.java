@@ -148,7 +148,7 @@ public class RevisionManager {
 		
 		DocumentDAO.getInstance().updateDocument(document);		
 		//get document class name 		
-		fileName = "Krystal_" + checkedOutDocument.getDocumentId() + "_" + checkedOutDocument.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toUpperCase();		
+		fileName =  document.getFilename() + "." + document.getExtension().toLowerCase();		
 		// add entry to checkout table 		
 		checkedOutDocument.setClassId(document.getClassId());
 		

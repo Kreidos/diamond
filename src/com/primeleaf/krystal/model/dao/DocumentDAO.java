@@ -41,10 +41,10 @@ import com.primeleaf.krystal.util.StringHelper;
  */
 public class DocumentDAO {
 	private Logger kLogger = Logger.getLogger(this.getClass().getPackage().getName());
-	private String SQL_INSERT_DOCUMENT = " INSERT INTO DOCUMENTS (REVISIONID,CLASSID,DOCUMENTTYPE,STATUS,EXT,HASNOTE,ACCESSCOUNT,CREATEDBY,EXPIRY,MODIFIEDBY,MODIFIED) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-	private String SQL_UPDATE_DOCUMENT=  " UPDATE DOCUMENTS SET REVISIONID=?, CLASSID=?, DOCUMENTTYPE=?, STATUS=?, EXT=?, HASNOTE = ?, ACCESSCOUNT=?, LASTACCESS=?, MODIFIED=?, MODIFIEDBY=?, EXPIRY=? WHERE DOCUMENTID=?";
+	private String SQL_INSERT_DOCUMENT = " INSERT INTO DOCUMENTS (REVISIONID,CLASSID,DOCUMENTTYPE,STATUS,EXT,FILENAME,HASNOTE,ACCESSCOUNT,CREATEDBY,EXPIRY,MODIFIEDBY,MODIFIED) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+	private String SQL_UPDATE_DOCUMENT=  " UPDATE DOCUMENTS SET REVISIONID=?, CLASSID=?, DOCUMENTTYPE=?, STATUS=?, EXT=?, FILENAME=?, HASNOTE = ?, ACCESSCOUNT=?, LASTACCESS=?, MODIFIED=?, MODIFIEDBY=?, EXPIRY=? WHERE DOCUMENTID=?";
 	private String SQL_DELETE_DOCUMENT=  " DELETE FROM DOCUMENTS WHERE DOCUMENTID=?";
-	private String SQL_SELECT_DOCUMENTBYID= "SELECT DOCUMENTID,REVISIONID,CLASSID,DOCUMENTTYPE,STATUS,CREATED,EXT,HASNOTE,LASTACCESS,ACCESSCOUNT,CREATEDBY,EXPIRY,MODIFIED,MODIFIEDBY FROM DOCUMENTS WHERE DOCUMENTID=?";
+	private String SQL_SELECT_DOCUMENTBYID= "SELECT DOCUMENTID,REVISIONID,CLASSID,DOCUMENTTYPE,STATUS,CREATED,EXT,FILENAME,HASNOTE,LASTACCESS,ACCESSCOUNT,CREATEDBY,EXPIRY,MODIFIED,MODIFIEDBY FROM DOCUMENTS WHERE DOCUMENTID=?";
 
 	private static DocumentDAO _instance;
 
@@ -76,6 +76,7 @@ public class DocumentDAO {
 		psInsert.setString(i++,document.getDocumentType());
 		psInsert.setString(i++,document.getStatus());
 		psInsert.setString(i++,document.getExtension().toUpperCase());
+		psInsert.setString(i++,document.getFilename());
 		psInsert.setInt(i++,0);
 		psInsert.setInt(i++,0);
 		psInsert.setString(i++,document.getCreatedBy());
@@ -111,6 +112,7 @@ public class DocumentDAO {
 		psUpdate.setString(i++,document.getDocumentType());
 		psUpdate.setString(i++,document.getStatus());
 		psUpdate.setString(i++,document.getExtension().toUpperCase());
+		psUpdate.setString(i++,document.getFilename());
 		psUpdate.setInt(i++,document.getHasNote());
 		psUpdate.setInt(i++,document.getAccessCount());
 		psUpdate.setTimestamp(i++,document.getLastAccessed());
@@ -176,6 +178,7 @@ public class DocumentDAO {
 			result.setStatus(rs.getString("STATUS"));
 			result.setCreated(rs.getString("CREATED"));
 			result.setExtension(rs.getString("EXT"));
+			result.setFilename(rs.getString("FILENAME"));
 			result.setHasNote(rs.getByte("HASNOTE"));
 			result.setLastAccessed(rs.getTimestamp("LASTACCESS"));
 			result.setAccessCount(rs.getInt("ACCESSCOUNT"));
@@ -217,6 +220,7 @@ public class DocumentDAO {
 				document.setModifiedBy(rs.getString("MODIFIEDBY"));
 				document.setExpiry(rs.getTimestamp("EXPIRY"));
 				document.setExtension(rs.getString("EXT"));
+				document.setFilename(rs.getString("FILENAME"));
 				document.setHasNote(rs.getByte("HASNOTE"));
 				document.setLastAccessed(rs.getTimestamp("LASTACCESS"));
 				document.setAccessCount(rs.getInt("ACCESSCOUNT"));

@@ -34,6 +34,7 @@ public class Document {
 	private String created;
 	private Timestamp modified;
 	private String extension;
+	private String filename; //filename support added by Kreidos@users.noreply.github.com 2016
 	private byte hasNote;
 	private Timestamp lastAccessed;
 	private int accessCount;
@@ -96,7 +97,15 @@ public class Document {
 	public void setExtension(String extension) {
 		this.extension = extension;
 	}
-
+	
+	public String getFilename() {
+		return filename;
+	}
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
 	public byte getHasNote() {
 		return hasNote;
 	}

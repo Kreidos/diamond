@@ -63,6 +63,7 @@ public class DocumentManager {
 			document.setDocumentType("IMAGE");
 			document.setStatus(Hit.STATUS_AVAILABLE);
 			document.setExtension(extension);
+			document.setFilename(fileName.substring(0, fileName.lastIndexOf(".")));
 			document.setHasNote((byte)0);
 			document.setAccessCount(0);
 			document.setRevisionId("1.0");
@@ -176,7 +177,7 @@ public class DocumentManager {
 				if ( !(basePath.endsWith("/") || basePath.endsWith("\\")) ){
 					basePath +=  System.getProperty("file.separator");
 				}
-				File documentFile = new File(basePath + "KRYSTAL_OBJ_"+ document.getDocumentId() +"_"+document.getRevisionId().replace('.','_')+"."+document.getExtension().toUpperCase());
+				File documentFile = new File(basePath + document.getFilename() + "." + document.getExtension().toLowerCase());
 				OutputStream out=new FileOutputStream(documentFile);
 				byte buf[]=new byte[1024];
 				int len;
