@@ -150,7 +150,7 @@ public class RevisionManager {
 		//get document class name 
 		
 		if(document.getFilename() == null){ //catch for old pre-1.1 files
-			fileName = "Krystal_" + document.getDocumentId() + "_Obj." + document.getExtension().toUpperCase();
+			fileName = "Krystal_" + checkedOutDocument.getDocumentId() + "_" + checkedOutDocument.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toLowerCase();
 		}else {
 		fileName = document.getFilename() + "." + document.getExtension().toLowerCase();		
 		}
