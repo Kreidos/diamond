@@ -262,7 +262,10 @@ public class ViewDocumentView extends WebView {
 			out.println("<div class=\"table-responsive\">");
 			out.println("<table class=\"table table-hover\">");
 			out.println("<thead><tr><th>Property</th><th>Value</th></tr></thead>");
-			out.println("<tbody><tr><td>Created By</td><td> "+ document.getCreatedBy()+"</td></tr>");
+			out.println("<tbody>");
+			if(document.getFilename()!=null) //Show filename if present
+				out.println("<tr><td>Filename</td><td> " + document.getFilename() + "." + document.getExtension().toLowerCase() + "</td></tr>");
+			out.println("<tr><td>Created By</td><td> "+ document.getCreatedBy()+"</td></tr>");
 			out.println("<tr><td>Created On</td><td>" +  StringHelper.getFriendlyDateTime(document.getCreated()) +"</td></tr>");
 			out.println("<tr><td>Last Accessed On</td><td>"+StringHelper.getFriendlyDateTime(lastAccessed) + "</td></tr>");
 			out.println("<tr><td>Access Count</td><td>"+ document.getAccessCount()+"</td></tr>");
