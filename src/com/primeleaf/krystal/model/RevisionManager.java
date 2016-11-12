@@ -149,11 +149,7 @@ public class RevisionManager {
 		DocumentDAO.getInstance().updateDocument(document);		
 		//get document class name 
 		
-		if(document.getFilename() == null){ //catch for old pre-1.1 files
-			fileName = "Krystal_" + checkedOutDocument.getDocumentId() + "_" + checkedOutDocument.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toLowerCase();
-		}else {
-		fileName = document.getFilename() + "." + document.getExtension().toLowerCase();		
-		}
+		fileName = document.getFullFilename();
 			
 		// add entry to checkout table 		
 		checkedOutDocument.setClassId(document.getClassId());

@@ -177,7 +177,7 @@ public class DocumentManager {
 				if ( !(basePath.endsWith("/") || basePath.endsWith("\\")) ){
 					basePath +=  System.getProperty("file.separator");
 				}
-				File documentFile = new File(basePath + document.getFilename() + "." + document.getExtension().toLowerCase());
+				File documentFile = new File(basePath + document.getFullFilename() );
 				OutputStream out=new FileOutputStream(documentFile);
 				byte buf[]=new byte[1024];
 				int len;

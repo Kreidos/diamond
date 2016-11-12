@@ -97,12 +97,7 @@ public class DocumentViewerAction implements Action {
 			document.setRevisionId(documentRevision.getRevisionId());
 			documentRevision = documentManager.retreiveDocument(document);
 			
-			String fileName = null;
-			if(document.getFilename() == null){ //catch for old pre-1.1 files
-				fileName = "Krystal_" + documentRevision.getDocumentId() + "_" + documentRevision.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toUpperCase();
-			}else {
-			fileName = document.getFilename() + "." + document.getExtension().toLowerCase();		
-			}
+			String fileName = document.getFullFilename();		
 			
 			ServletContext servletContext = request.getServletContext();
 			String targetName = "";

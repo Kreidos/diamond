@@ -102,6 +102,13 @@ public class Document {
 		return filename;
 	}
 	
+	public String getFullFilename(){
+		if(filename==null) //catch for pre-1.1 files, Kreidos 2016
+			return( "Krystal_" + getDocumentId() + "_" + getRevisionId().replace('.','_') + "_Obj." + getExtension().toUpperCase() );
+		else
+			return( getFilename() + "." + getExtension().toLowerCase() );
+	}
+	
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}

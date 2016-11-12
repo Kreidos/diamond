@@ -121,13 +121,7 @@ public class BulkDownloadAction implements Action {
 				File downloadFile = new File(documentRevision.getDocumentFile().getAbsolutePath());
 				FileInputStream fis = new FileInputStream(downloadFile);
 				origin = new BufferedInputStream(fis, BUFFER);
-				String curName = null;
-				if(document.getFilename() == null){ //catch for old pre-1.1 files
-					curName = "Krystal_" + documentRevision.getDocumentId() + "_" + documentRevision.getRevisionId().replace('.','_') + "_Obj." + document.getExtension().toUpperCase();
-				}else {
-					curName = document.getFilename() + "." + document.getExtension().toLowerCase(); 
-				}
-				ZipEntry entry = new ZipEntry(curName);
+				ZipEntry entry = new ZipEntry(document.getFullFilename());
 				out.putNextEntry(entry);
 				int count;
 				while((count = origin.read(data, 0, BUFFER)) != -1) {
