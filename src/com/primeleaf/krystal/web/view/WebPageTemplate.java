@@ -104,7 +104,7 @@ public class WebPageTemplate {
 			out.println("<div class=\"navbar navbar-default navbar-inverse navbar-fixed-top\" role=\"navigation\">");
 			out.println("<div class=\"container-fluid\">");
 			out.println("<div class=\"navbar-header\">");
-			out.println("<a class=\"navbar-brand\"><img src=\"/images/diamond.png\" width=\"32\" height=\"32\" align=\"left\"/></a>");
+			out.println("<a class=\"navbar-brand\"><img src=\"/images/diamond.png\" width=\"32\" height=\"32\" align=\"left\">&nbsp;&nbsp;" + ServerConstants.SERVER_NAME + "</a>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -190,8 +190,9 @@ public class WebPageTemplate {
 		out.println("</div>");//continer-fluid
 		out.println("</div>");/*wrap ends here*/
 		out.println("<div id=\"footer\">");
-		out.println("<div class=\"container-fluid\" style=\"padding:2px;\">");
-		out.println("<div class=\"text-right text-muted\" style=\"padding:2px;\">&copy;  Primeleaf Consulting (P) Ltd.</div>");
+		out.println("<div class=\"container-fluid\" style=\"padding:3px;\">");
+		out.println("<div class=\"pull-left text-muted\" style=\"padding:2px;\">" + ServerConstants.SERVER_NAME + " v" +ServerConstants.SERVER_VERSION + "</div>");
+		out.println("<div class=\"text-right text-muted\" style=\"padding:2px;\"><a href=\"https://github.com/kreidos/diamond\" target=\"_new\">&copy; Kreidos</a> & <a href=\"http://www.krystaldms.in\" target=\"_new\">&copy;Primeleaf Consulting (P) Ltd.</a></div>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");
