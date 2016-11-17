@@ -41,8 +41,6 @@ public class ServerConstants {
 	public static final String SYSTEM_DMC_PATH ="/webapps/DMC";
 	public static final String SYSTEM_SETUP_PATH ="/webapps/SETUP";
 	
-	public static final String CONFIG_FILE = "/conf/config.xml";
-	
 	public static final String CONFIG_DBNAME="DatabaseName";
 	public static final String CONFIG_DBOWNER="DatabaseOwner";
 	public static final String CONFIG_DBPORT="DatabasePort";

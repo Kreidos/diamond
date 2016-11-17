@@ -64,8 +64,6 @@ public class NewDocumentAction implements Action {
 		if(request.getMethod().equalsIgnoreCase("POST")){
 			try{
 				String userName = loggedInUser.getUserName();
-				String sessionid = (String)session.getId();
-
 				String tempFilePath = System.getProperty("java.io.tmpdir");
 
 				if ( !(tempFilePath.endsWith("/") || tempFilePath.endsWith("\\")) ){
@@ -73,7 +71,7 @@ public class NewDocumentAction implements Action {
 				}
 
 				//variables
-				String fileName="",ext="",comments="";
+				String fileName="",comments="";
 				File file =null;
 				// Create a factory for disk-based file items
 				FileItemFactory factory = new DiskFileItemFactory();
@@ -115,7 +113,6 @@ public class NewDocumentAction implements Action {
 							fileName = fileItem.getName();  	
 							file = new File(fileName);
 							fileName = file.getName();
-							ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
 							file=new File(tempFilePath+ fileName);				    
 							fileItem.write(file);
 						}catch(Exception ex){

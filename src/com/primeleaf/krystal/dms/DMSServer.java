@@ -34,6 +34,7 @@ import java.util.logging.Logger;
 
 import com.primeleaf.krystal.constants.ServerConstants;
 import com.primeleaf.krystal.model.ConnectionPoolManager;
+import com.primeleaf.krystal.model.PropertiesManager;
 import com.primeleaf.krystal.model.dao.DocumentClassDAO;
 import com.primeleaf.krystal.model.dao.UserDAO;
 import com.primeleaf.krystal.model.vo.DocumentClass;
@@ -56,12 +57,15 @@ public class DMSServer {
 	private String SERVER_VERSION = "X.X";
 	private static WebServerManager webServerManager;
 	private static DMSServer serverInstance;
+	private PropertiesManager properties = PropertiesManager.getInstance();
+	
 	public static synchronized DMSServer getInstance(){
 		if(serverInstance == null){
 			serverInstance = new DMSServer();
 		}
 		return serverInstance;
 	}
+	
 	private DMSServer() {
 		try {
 			setEnvironment();
@@ -96,7 +100,7 @@ public class DMSServer {
 	private void startWebApplications() {
 		try{
 			kLogger.info("Starting web application server...");
-			int httpPort = 8080;
+			int httpPort = Integer.parseInt(properties.getPropertyValue("httpport"));
 			webServerManager = new WebServerManager(httpPort,KRYSTAL_HOME);
 			webServerManager.start();
 		}catch (Exception ex) {
