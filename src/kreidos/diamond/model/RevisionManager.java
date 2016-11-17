@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.io.File;
 import java.sql.Connection;
@@ -30,14 +30,15 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.dao.CheckedOutDocumentDAO;
-import com.primeleaf.krystal.model.dao.DocumentDAO;
-import com.primeleaf.krystal.model.vo.CheckedOutDocument;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.DocumentRevision;
-import com.primeleaf.krystal.model.vo.Hit;
-import com.primeleaf.krystal.model.vo.RevisionRecord;
+import kreidos.diamond.model.dao.CheckedOutDocumentDAO;
+import kreidos.diamond.model.dao.DocumentDAO;
+import kreidos.diamond.model.vo.CheckedOutDocument;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.DocumentRevision;
+import kreidos.diamond.model.vo.Hit;
+import kreidos.diamond.model.vo.RevisionRecord;
+
 
 /**
  * All activities associated with revisions are carried out here.

@@ -14,7 +14,7 @@
  * you entered into with Arysys Technologies (P) Ltd.
  * 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,17 +30,18 @@ import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.dao.DocumentClassDAO;
-import com.primeleaf.krystal.model.dao.DocumentDAO;
-import com.primeleaf.krystal.model.dao.DocumentNoteDAO;
-import com.primeleaf.krystal.model.dao.DocumentRevisionDAO;
-import com.primeleaf.krystal.model.dao.UserDAO;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.DocumentNote;
-import com.primeleaf.krystal.model.vo.DocumentRevision;
-import com.primeleaf.krystal.model.vo.Hit;
-import com.primeleaf.krystal.model.vo.User;
+import kreidos.diamond.model.dao.DocumentClassDAO;
+import kreidos.diamond.model.dao.DocumentDAO;
+import kreidos.diamond.model.dao.DocumentNoteDAO;
+import kreidos.diamond.model.dao.DocumentRevisionDAO;
+import kreidos.diamond.model.dao.UserDAO;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.DocumentNote;
+import kreidos.diamond.model.vo.DocumentRevision;
+import kreidos.diamond.model.vo.Hit;
+import kreidos.diamond.model.vo.User;
+
 
 /**
  * @author Rahul Kubadia

@@ -16,13 +16,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 
 /**Value object for database table CHECKOUT
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.model.RevisionManager
+ * @see kreidos.diamond.model.RevisionManager
  */
 
 public class CheckedOutDocument {

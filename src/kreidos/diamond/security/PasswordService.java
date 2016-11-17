@@ -17,7 +17,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  **/
 
-package com.primeleaf.krystal.security;
+package kreidos.diamond.security;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

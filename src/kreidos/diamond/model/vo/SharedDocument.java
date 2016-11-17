@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
 */
 
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 /**
  * This is a value object for SharedDocuments table

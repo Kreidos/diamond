@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.dao;
+package kreidos.diamond.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,8 +23,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.vo.Bookmark;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.vo.Bookmark;
+
 
 /**
  * @author Rahul Kubadia

@@ -1,4 +1,4 @@
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

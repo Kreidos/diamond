@@ -35,7 +35,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd. 
  */
 
-package com.primeleaf.krystal.web.view;
+package kreidos.diamond.web.view;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

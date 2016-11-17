@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
-package com.primeleaf.krystal.web.view;
+package kreidos.diamond.web.view;
 
 import java.io.PrintWriter;
 
@@ -23,11 +23,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.constants.ServerConstants;
+import kreidos.diamond.model.vo.User;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.constants.ServerConstants;
-import com.primeleaf.krystal.model.vo.User;
 
 
 /**

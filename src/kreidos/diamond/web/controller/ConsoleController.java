@@ -16,17 +16,18 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.controller;
+package kreidos.diamond.web.controller;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.web.action.Action;
-import com.primeleaf.krystal.web.view.WebView;
-import com.primeleaf.krystal.web.view.console.AJAXResponseView;
+import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.web.action.Action;
+import kreidos.diamond.web.view.WebView;
+import kreidos.diamond.web.view.console.AJAXResponseView;
+
 
 /**
  * Author Rahul Kubadia

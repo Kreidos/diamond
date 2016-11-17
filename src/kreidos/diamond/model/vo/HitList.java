@@ -17,7 +17,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd. 
  */
 
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 import java.util.ArrayList;
 
@@ -26,8 +26,8 @@ import java.util.ArrayList;
  * @author Rahul Kubadia
  * @since 3.1 [23<SUP>rd</SUP> September 2009]
  * 
- * @see com.primeleaf.krystal.model.dao.HitListDAO
- * @see com.primeleaf.krystal.model.vo.Hit
+ * @see kreidos.diamond.model.dao.HitListDAO
+ * @see kreidos.diamond.model.vo.Hit
  */
 
 public class HitList {

@@ -16,18 +16,19 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.util.ArrayList;
 
-import com.primeleaf.krystal.model.dao.AuditLogRecordDAO;
-import com.primeleaf.krystal.model.vo.AuditLogRecord;
+import kreidos.diamond.model.dao.AuditLogRecordDAO;
+import kreidos.diamond.model.vo.AuditLogRecord;
+
 
 /**
  * Storage and retrieval for audit logs are handled via this class.
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.model.vo.AuditLogRecord
+ * @see kreidos.diamond.model.vo.AuditLogRecord
  * @see com.primeleaf.dms.data.AuditLogRecrodDAO
  */
 public class AuditLogManager {

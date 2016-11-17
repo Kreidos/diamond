@@ -15,19 +15,20 @@
  * 
  */
 
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 import java.util.ArrayList;
 
-import com.primeleaf.krystal.constants.ServerConstants;
+import kreidos.diamond.constants.ServerConstants;
+
 
 /**
  * The value object for document Hit
  * @author Rahul Kubadia
  * @since 1.0
  * 
- * @see com.primeleaf.krystal.model.vo.HitList
- * @see com.primeleaf.krystal.model.dao.HitListDAO
+ * @see kreidos.diamond.model.vo.HitList
+ * @see kreidos.diamond.model.dao.HitListDAO
  */
 
 public class Hit implements java.io.Serializable {

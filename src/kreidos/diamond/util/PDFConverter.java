@@ -16,11 +16,14 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentRevision;
 
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
@@ -28,8 +31,6 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.RandomAccessFileOrArray;
 import com.itextpdf.text.pdf.codec.TiffImage;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentRevision;
 
 /**
  * This file converts given document into PDF format with or without password for viewing of document in mobile device

@@ -24,7 +24,7 @@
  *  @author hhakim
  *
  */
-package com.primeleaf.krystal.security;
+package kreidos.diamond.security;
 public class CalculateACL {
 
 	int finalACL = 0; /** holds the final ACL value */

@@ -16,12 +16,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Primeleaf Consutling (P) Ltd. 
  */
-package com.primeleaf.krystal.constants;
+package kreidos.diamond.constants;
 
 /**
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.web.WebServerManager
+ * @see kreidos.diamond.web.WebServerManager
  * @comments This class keeps all constants reqiured for server 
  */
 public class ServerConstants {

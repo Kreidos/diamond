@@ -1,4 +1,4 @@
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 public class PasswordHistory {
 	

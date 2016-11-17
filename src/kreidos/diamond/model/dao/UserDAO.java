@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.dao;
+package kreidos.diamond.model.dao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,11 +30,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.constants.ServerConstants;
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.vo.MetaColumnPreferences;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.security.PasswordService;
+import kreidos.diamond.constants.ServerConstants;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.vo.MetaColumnPreferences;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.security.PasswordService;
+
 
 /**
  * @author Rahul Kubadia

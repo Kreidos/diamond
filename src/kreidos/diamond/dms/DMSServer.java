@@ -18,7 +18,7 @@
  * Portions copyright Kreidos@users.noreply.github.com, 2016
  */
 
-package com.primeleaf.krystal.dms;
+package kreidos.diamond.dms;
 
 import java.io.File;
 import java.sql.Connection;
@@ -32,22 +32,23 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.constants.ServerConstants;
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.PropertiesManager;
-import com.primeleaf.krystal.model.dao.DocumentClassDAO;
-import com.primeleaf.krystal.model.dao.UserDAO;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.util.DerbyQueries;
-import com.primeleaf.krystal.util.ExpiryProcessor;
-import com.primeleaf.krystal.web.WebServerManager;
+import kreidos.diamond.constants.ServerConstants;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.PropertiesManager;
+import kreidos.diamond.model.dao.DocumentClassDAO;
+import kreidos.diamond.model.dao.UserDAO;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.util.DerbyQueries;
+import kreidos.diamond.util.ExpiryProcessor;
+import kreidos.diamond.web.WebServerManager;
+
 
 /**
  * @author Rahul Kubadia
  * @since 1.0
  * @comments Krystal Server initialized , started and stopped using methods in this class.
- * @see com.primeleaf.krystal.web.KrystalSession
+ * @see kreidos.diamond.web.KrystalSession
  * 
  */
 
@@ -142,7 +143,7 @@ public class DMSServer {
 			}catch(Exception ex){ //Database does not exist hence create it
 				connectionString = "jdbc:derby:" + System.getProperty("user.dir") + "/data/" + ServerConstants.KRYSTAL_DATABASE + ";create=true;";
 				databaseConnection = DriverManager.getConnection(connectionString);
-				ResourceBundle queryResource =  DerbyQueries.getBundle("com.primeleaf.krystal.util.DerbyQueries");
+				ResourceBundle queryResource =  DerbyQueries.getBundle("kreidos.diamond.util.DerbyQueries");
 				Statement stat = databaseConnection.createStatement();
 				stat.execute(" CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.user."+ ServerConstants.KRYSTAL_DATABASEOWNER + "', '" + ServerConstants.KRYSTAL_DATABASEPASSWORD + "')");
 				stat.execute(" CREATE SCHEMA "+ServerConstants.KRYSTAL_DATABASEOWNER+" ");

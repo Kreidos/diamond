@@ -35,16 +35,17 @@
  * you entered into with Primeleaf Consulting (P) Ltd. 
  */
 
-package com.primeleaf.krystal.web.view.cpanel;
+package kreidos.diamond.web.view.cpanel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.web.view.WebPageTemplate;
+import kreidos.diamond.web.view.WebView;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.web.view.WebPageTemplate;
-import com.primeleaf.krystal.web.view.WebView;
 
 /**
  * @author Rahul Kubadia

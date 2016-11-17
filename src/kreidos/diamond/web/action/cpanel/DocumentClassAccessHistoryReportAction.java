@@ -16,22 +16,23 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.action.cpanel;
+package kreidos.diamond.web.action.cpanel;
 
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.model.AuditLogManager;
-import com.primeleaf.krystal.model.dao.DocumentClassDAO;
-import com.primeleaf.krystal.model.vo.AuditLogRecord;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.util.DBStringHelper;
-import com.primeleaf.krystal.web.action.Action;
-import com.primeleaf.krystal.web.view.WebView;
-import com.primeleaf.krystal.web.view.cpanel.DocumentClassAccessHistoryReportView;
+import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.model.AuditLogManager;
+import kreidos.diamond.model.dao.DocumentClassDAO;
+import kreidos.diamond.model.vo.AuditLogRecord;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.util.DBStringHelper;
+import kreidos.diamond.web.action.Action;
+import kreidos.diamond.web.view.WebView;
+import kreidos.diamond.web.view.cpanel.DocumentClassAccessHistoryReportView;
+
 
 /**
  * Author Rahul Kubadia

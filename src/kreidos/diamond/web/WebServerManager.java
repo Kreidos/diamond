@@ -17,17 +17,18 @@
  * 
  */
 
-package com.primeleaf.krystal.web;
+package kreidos.diamond.web;
 
 
 import java.util.logging.Logger;
+
+import kreidos.diamond.constants.ServerConstants;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.valves.AccessLogValve;
 
-import com.primeleaf.krystal.constants.ServerConstants;
 
 /**
  * This class starts the embedded tomcat server and loads the web apps depending upon the configuration settings.

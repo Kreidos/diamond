@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.view;
+package kreidos.diamond.web.view;
 
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -25,12 +25,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.model.vo.HitList;
+import kreidos.diamond.model.vo.IndexDefinition;
+import kreidos.diamond.model.vo.User;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.model.vo.HitList;
-import com.primeleaf.krystal.model.vo.IndexDefinition;
-import com.primeleaf.krystal.model.vo.User;
 
 /**
  * @author Rahul Kubadia

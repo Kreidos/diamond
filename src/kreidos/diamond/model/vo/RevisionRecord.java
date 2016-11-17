@@ -17,7 +17,7 @@
  * you entered into with Arysys Technologies (P) Ltd.
  * 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 /**
  * Revision histroy value object 

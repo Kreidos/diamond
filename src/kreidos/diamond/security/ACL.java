@@ -16,7 +16,7 @@
  * you entered into with Arysys Technologies (P) Ltd.
  * 
  */
-package com.primeleaf.krystal.security;
+package kreidos.diamond.security;
 
 /**
  * @author Rahul Kubadia

@@ -17,7 +17,7 @@
  * you entered into with Arysys Technologies (P) Ltd.
  * 
  */
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,9 +27,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.primeleaf.krystal.model.AuditLogManager;
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.vo.AuditLogRecord;
+import kreidos.diamond.model.AuditLogManager;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.vo.AuditLogRecord;
+
 
 /**
  * @author Pratik.Makani

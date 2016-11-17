@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,13 +24,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.primeleaf.krystal.model.dao.IndexDefinitionDAO;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.Hit;
-import com.primeleaf.krystal.model.vo.HitList;
-import com.primeleaf.krystal.model.vo.IndexDefinition;
-import com.primeleaf.krystal.model.vo.SearchFilter;
-import com.primeleaf.krystal.util.DBStringHelper;
+import kreidos.diamond.model.dao.IndexDefinitionDAO;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.Hit;
+import kreidos.diamond.model.vo.HitList;
+import kreidos.diamond.model.vo.IndexDefinition;
+import kreidos.diamond.model.vo.SearchFilter;
+import kreidos.diamond.util.DBStringHelper;
+
 
 /**
  * Author Rahul Kubadia

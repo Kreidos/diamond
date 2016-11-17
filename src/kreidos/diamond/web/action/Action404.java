@@ -16,13 +16,14 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.action;
+package kreidos.diamond.web.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.primeleaf.krystal.web.view.Error404View;
-import com.primeleaf.krystal.web.view.WebView;
+import kreidos.diamond.web.view.Error404View;
+import kreidos.diamond.web.view.WebView;
+
 
 /**
  * Author Rahul Kubadia

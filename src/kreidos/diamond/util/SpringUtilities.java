@@ -1,4 +1,4 @@
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.awt.Component;
 import java.awt.Container;

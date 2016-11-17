@@ -18,7 +18,7 @@
  */
 
 
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.net.InetAddress;
 import java.text.DecimalFormat;

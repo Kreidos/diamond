@@ -16,23 +16,24 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.IndexDefinition;
-import com.primeleaf.krystal.util.DBStringHelper;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.IndexDefinition;
+import kreidos.diamond.util.DBStringHelper;
+
 
 /**
  * Creates / deletes Index tables  and Data tables for given document class 
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.model.vo.DocumentClass
- * @see com.primeleaf.krystal.model.dao.DocumentClassDAO
+ * @see kreidos.diamond.model.vo.DocumentClass
+ * @see kreidos.diamond.model.dao.DocumentClassDAO
  */
 public class TableManager {
 

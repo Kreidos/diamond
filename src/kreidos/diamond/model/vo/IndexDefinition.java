@@ -16,14 +16,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 /**
  * Store definitions of indexes used in DMS System
  * Index Definition Value Object
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.model.vo.DocumentClass
+ * @see kreidos.diamond.model.vo.DocumentClass
  */
 public class IndexDefinition {
 	public static long serialVersionUID =1L;

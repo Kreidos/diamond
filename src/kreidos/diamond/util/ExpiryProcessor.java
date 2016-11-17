@@ -16,18 +16,19 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.dao.DocumentClassDAO;
-import com.primeleaf.krystal.model.dao.DocumentDAO;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.Hit;
+import kreidos.diamond.model.dao.DocumentClassDAO;
+import kreidos.diamond.model.dao.DocumentDAO;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.Hit;
+
 
 /**
  * This class processes all the documents which are expiring today and will mark them as expired.

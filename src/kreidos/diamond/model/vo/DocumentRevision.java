@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 import java.io.File;
 import java.util.Hashtable;
@@ -25,7 +25,7 @@ import java.util.Hashtable;
  * Document contains revisions. These revisions are accessed using this value object
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.model.vo.Document
+ * @see kreidos.diamond.model.vo.Document
  */
 public class DocumentRevision {
 

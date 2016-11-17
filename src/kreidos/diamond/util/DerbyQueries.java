@@ -17,7 +17,7 @@
  * you entered into with Arysys Technologies (P) Ltd.
  *
  */
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.util.ListResourceBundle;
 

@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.action.console;
+package kreidos.diamond.web.action.console;
 
 import java.util.ArrayList;
 
@@ -24,19 +24,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.primeleaf.krystal.constants.HTTPConstants;
-import com.primeleaf.krystal.model.AuditLogManager;
-import com.primeleaf.krystal.model.dao.DocumentDAO;
-import com.primeleaf.krystal.model.dao.DocumentNoteDAO;
-import com.primeleaf.krystal.model.vo.AuditLogRecord;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentNote;
-import com.primeleaf.krystal.model.vo.Hit;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.web.action.Action;
-import com.primeleaf.krystal.web.view.WebView;
-import com.primeleaf.krystal.web.view.console.AJAXResponseView;
-import com.primeleaf.krystal.web.view.console.DocumentNotesView;
+import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.model.AuditLogManager;
+import kreidos.diamond.model.dao.DocumentDAO;
+import kreidos.diamond.model.dao.DocumentNoteDAO;
+import kreidos.diamond.model.vo.AuditLogRecord;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentNote;
+import kreidos.diamond.model.vo.Hit;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.web.action.Action;
+import kreidos.diamond.web.view.WebView;
+import kreidos.diamond.web.view.console.AJAXResponseView;
+import kreidos.diamond.web.view.console.DocumentNotesView;
+
 
 /**
  * Author Rahul Kubadia

@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.action.console;
+package kreidos.diamond.web.action.console;
 
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
@@ -31,11 +31,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.primeleaf.krystal.constants.ServerConstants;
-import com.primeleaf.krystal.model.dao.UserDAO;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.web.action.Action;
-import com.primeleaf.krystal.web.view.WebView;
+import kreidos.diamond.constants.ServerConstants;
+import kreidos.diamond.model.dao.UserDAO;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.web.action.Action;
+import kreidos.diamond.web.view.WebView;
+
 
 /**
  * Author Rahul Kubadia

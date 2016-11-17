@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
 */
 
- package com.primeleaf.krystal.model.vo;
+ package kreidos.diamond.model.vo;
 
 import java.util.Enumeration;
 import java.util.Vector;

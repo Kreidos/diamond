@@ -16,16 +16,17 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.sql.Connection;
 
 import javax.sql.DataSource;
 
+import kreidos.diamond.constants.ServerConstants;
+
 import org.apache.tomcat.dbcp.dbcp2.cpdsadapter.DriverAdapterCPDS;
 import org.apache.tomcat.dbcp.dbcp2.datasources.SharedPoolDataSource;
 
-import com.primeleaf.krystal.constants.ServerConstants;
 
 /**
  * @author Rahul Kubadia

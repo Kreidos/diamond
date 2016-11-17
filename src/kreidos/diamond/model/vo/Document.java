@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 import java.sql.Timestamp;
 

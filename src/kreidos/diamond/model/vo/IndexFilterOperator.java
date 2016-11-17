@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
 */
 
- package com.primeleaf.krystal.model.vo;
+ package kreidos.diamond.model.vo;
  public class IndexFilterOperator {
 	 private byte value;
 	 private String description;

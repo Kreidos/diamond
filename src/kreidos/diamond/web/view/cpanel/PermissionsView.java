@@ -17,21 +17,22 @@
  */
 
 
-package com.primeleaf.krystal.web.view.cpanel;
+package kreidos.diamond.web.view.cpanel;
 
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.Permission;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.security.ACL;
+import kreidos.diamond.web.view.WebPageTemplate;
+import kreidos.diamond.web.view.WebView;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.Permission;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.security.ACL;
-import com.primeleaf.krystal.web.view.WebPageTemplate;
-import com.primeleaf.krystal.web.view.WebView;
 
 /**
  * @author Rahul Kubadia

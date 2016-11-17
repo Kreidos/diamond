@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.dao;
+package kreidos.diamond.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,17 +27,18 @@ import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentRevision;
-import com.primeleaf.krystal.model.vo.Hit;
-import com.primeleaf.krystal.util.DBStringHelper;
-import com.primeleaf.krystal.util.StringHelper;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentRevision;
+import kreidos.diamond.model.vo.Hit;
+import kreidos.diamond.util.DBStringHelper;
+import kreidos.diamond.util.StringHelper;
+
 /**
  * Database access to the Document value object is performed here
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.data.Document
+ * @see kreidos.diamond.data.Document
  */
 public class DocumentDAO {
 	private Logger kLogger = Logger.getLogger(this.getClass().getPackage().getName());

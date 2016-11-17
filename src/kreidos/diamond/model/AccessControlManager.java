@@ -16,15 +16,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.util.ArrayList;
 
-import com.primeleaf.krystal.model.dao.PermissionDAO;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.Permission;
-import com.primeleaf.krystal.model.vo.User;
-import com.primeleaf.krystal.security.ACL;
+import kreidos.diamond.model.dao.PermissionDAO;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.Permission;
+import kreidos.diamond.model.vo.User;
+import kreidos.diamond.security.ACL;
+
 
 /**
  * Access control values are managed / read via this module

@@ -19,10 +19,10 @@
  * 
  */
 
- package com.primeleaf.krystal.security;
+ package kreidos.diamond.security;
 
-import com.primeleaf.krystal.model.dao.UserDAO;
-import com.primeleaf.krystal.model.vo.User;
+import kreidos.diamond.model.dao.UserDAO;
+import kreidos.diamond.model.vo.User;
  /**
   * This class is used for user authentication
  * @author Rahul Kubadia

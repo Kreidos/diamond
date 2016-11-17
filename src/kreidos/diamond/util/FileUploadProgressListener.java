@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import org.apache.commons.fileupload.ProgressListener;
 

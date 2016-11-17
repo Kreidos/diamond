@@ -16,15 +16,16 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.web.action.console;
+package kreidos.diamond.web.action.console;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.primeleaf.krystal.util.FileUploadProgressListener;
-import com.primeleaf.krystal.web.action.Action;
-import com.primeleaf.krystal.web.view.WebView;
+import kreidos.diamond.util.FileUploadProgressListener;
+import kreidos.diamond.web.action.Action;
+import kreidos.diamond.web.view.WebView;
+
 
 /**
  * Author Rahul Kubadia

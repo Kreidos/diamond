@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.vo;
+package kreidos.diamond.model.vo;
 
 import java.io.File;
 
@@ -24,8 +24,8 @@ import java.io.File;
  * @author Rahul Kubadia
  * @since 2.0
  * @comments User value object
- * @see com.primeleaf.krystal.model.vo.Role
- * @see com.primeleaf.krystal.model.vo.Group
+ * @see kreidos.diamond.model.vo.Role
+ * @see kreidos.diamond.model.vo.Group
  * 
  */
 public class User {

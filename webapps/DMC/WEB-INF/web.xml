@@ -3,15 +3,15 @@
 	<display-name>KRYSTAL DMS</display-name>
 	<servlet id="Servlet_Main">
 		<servlet-name>DMSController</servlet-name>
-		<servlet-class>com.primeleaf.krystal.web.controller.DMSController</servlet-class>
+		<servlet-class>kreidos.diamond.web.controller.DMSController</servlet-class>
 	</servlet>
 	<servlet id="Servlet_Console">
 		<servlet-name>ConsoleController</servlet-name>
-		<servlet-class>com.primeleaf.krystal.web.controller.ConsoleController</servlet-class>
+		<servlet-class>kreidos.diamond.web.controller.ConsoleController</servlet-class>
 	</servlet>
 	<servlet id="Servlet_ControlPanel">
 		<servlet-name>ControlPanelController</servlet-name>
-		<servlet-class>com.primeleaf.krystal.web.controller.ControlPanelController</servlet-class>
+		<servlet-class>kreidos.diamond.web.controller.ControlPanelController</servlet-class>
 	</servlet>
 	<servlet-mapping id="ServletMapping_Main">
 		<servlet-name>DMSController</servlet-name>

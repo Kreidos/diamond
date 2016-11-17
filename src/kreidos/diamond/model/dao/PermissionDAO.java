@@ -16,7 +16,7 @@
  * you entered into with Primeleaf Consulting (P) Ltd.
  */
 
-package com.primeleaf.krystal.model.dao;
+package kreidos.diamond.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,8 +24,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.vo.Permission;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.vo.Permission;
+
 
 /**
  * Author Rahul.Kubadia

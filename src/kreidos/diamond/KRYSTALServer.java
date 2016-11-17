@@ -14,14 +14,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal;
+package kreidos.diamond;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
 import javax.swing.JOptionPane;
 
-import com.primeleaf.krystal.dms.DMSServer;
+import kreidos.diamond.dms.DMSServer;
+
 
 
 /**

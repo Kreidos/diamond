@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.constants;
+package kreidos.diamond.constants;
 
 /**
  * This class stores all the HTTP Request and Session variable used by Krystal(tm) EDMS

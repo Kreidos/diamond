@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with Arysys Technologies (P) Ltd. 
  */
-package com.primeleaf.krystal.model.dao;
+package kreidos.diamond.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,22 +24,22 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.primeleaf.krystal.model.ConnectionPoolManager;
-import com.primeleaf.krystal.model.RevisionManager;
-import com.primeleaf.krystal.model.TableManager;
-import com.primeleaf.krystal.model.vo.CheckedOutDocument;
-import com.primeleaf.krystal.model.vo.Document;
-import com.primeleaf.krystal.model.vo.DocumentClass;
-import com.primeleaf.krystal.model.vo.IndexDefinition;
-import com.primeleaf.krystal.util.DBStringHelper;
-//import com.primeleaf.dms.data.Bookmark;
+import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.RevisionManager;
+import kreidos.diamond.model.TableManager;
+import kreidos.diamond.model.vo.CheckedOutDocument;
+import kreidos.diamond.model.vo.Document;
+import kreidos.diamond.model.vo.DocumentClass;
+import kreidos.diamond.model.vo.IndexDefinition;
+import kreidos.diamond.util.DBStringHelper;
+
 
 /**
  * Database related actions on Document Class value object is 
  * carried out in this class.
  * @author Rahul Kubadia
  * @since 2.0
- * @see com.primeleaf.krystal.data.DocumentClass
+ * @see kreidos.diamond.data.DocumentClass
  */
 public class DocumentClassDAO {
 

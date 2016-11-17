@@ -20,7 +20,7 @@
  */
 
 
-package com.primeleaf.krystal.util;
+package kreidos.diamond.util;
 
 import java.io.File;
 import java.util.Date;

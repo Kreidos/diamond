@@ -1,4 +1,4 @@
-package com.primeleaf.krystal.model;
+package kreidos.diamond.model;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
