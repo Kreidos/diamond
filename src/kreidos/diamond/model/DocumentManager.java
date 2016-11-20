@@ -30,6 +30,7 @@ import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
+import kreidos.diamond.constants.ServerConstants;
 import kreidos.diamond.model.dao.DocumentClassDAO;
 import kreidos.diamond.model.dao.DocumentDAO;
 import kreidos.diamond.model.dao.DocumentNoteDAO;
@@ -41,6 +42,9 @@ import kreidos.diamond.model.vo.DocumentNote;
 import kreidos.diamond.model.vo.DocumentRevision;
 import kreidos.diamond.model.vo.Hit;
 import kreidos.diamond.model.vo.User;
+import kreidos.diamond.util.FileHelper;
+
+import org.apache.commons.io.FileUtils;
 
 
 /**
@@ -53,6 +57,7 @@ public class DocumentManager {
 	public DocumentManager() {}
 
 	public void storeDocument(DocumentRevision documentRevision,DocumentClass documentClass)throws Exception{
+	
 		String fileName = documentRevision.getDocumentFile().getName();
 		String extension = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
 		int fileLength = (int) documentRevision.getDocumentFile().length();
@@ -90,13 +95,18 @@ public class DocumentManager {
 			DocumentClassDAO.getInstance().increaseActiveDocumentCount(documentClass);
 			documentRevision.setDocumentId(document.getDocumentId()); //set the document id in document revision
 		}
+		
+		if(ServerConstants.STORAGE_TYPE == 1){ //Folder File System Support Kreidos 2016
+			DocumentManager docMan = new DocumentManager();
+			documentRevision.setDocumentFile( docMan.storeDocumentFileInFolder(documentRevision, documentClass) );
+		}else{
+			int dataId = 0;
+			dataId = storeDocumentFileInDatabase(documentRevision,documentClass);
 
-		int dataId = 0;
-
-		dataId = storeDocumentFileInDatabase(documentRevision,documentClass);
-
-		//Store the document revision in the DOCUMENTREVISIONS TABLE
-		documentRevision.setOffset(dataId);
+//			Store the document revision in the DOCUMENTREVISIONS TABLE
+			documentRevision.setOffset(dataId);
+		}
+		
 		documentRevision.setLength(fileLength);
 		DocumentRevisionDAO.getInstance().addDocumentRevision(documentRevision);
 
@@ -107,10 +117,38 @@ public class DocumentManager {
 		saveCommentsAsJournalNotes(documentRevision.getDocumentId(),documentRevision.getComments(),documentRevision.getUserName());
 
 	}
+	
+	private File storeDocumentFileInFolder(DocumentRevision documentRevision, DocumentClass documentClass) throws Exception{
+		File destFile = null;
+		File sourceFile = documentRevision.getDocumentFile();
+		destFile = new File(FileHelper.getFilePath(documentRevision, documentClass));
+		FileUtils.moveFile(sourceFile, destFile);
+		return destFile;
+	}
+	
+	/**
+	 * Stores files in Folders rather than database
+	 * @author Kreidos
+	 * @since Diamond 1.2
+	 * @param document
+	 * @return
+	 */
+	public DocumentRevision retreiveDocumentFromFolder(Document document){
+		File filePath = null;
+		DocumentRevision documentRevision = null;
+		try {
+			documentRevision = DocumentRevisionDAO.getInstance().readDocumentRevisionById(document.getDocumentId(), document.getRevisionId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return documentRevision;
+	}
 
 	private int storeDocumentFileInDatabase(DocumentRevision documentRevision,DocumentClass documentClass)throws Exception{
 		return storeOthers(documentRevision,documentClass);
 	}
+	
+	
 
 
 	private int storeOthers(DocumentRevision documentRevision,DocumentClass documentClass) throws Exception {
@@ -159,6 +197,10 @@ public class DocumentManager {
 	}
 
 	public DocumentRevision retreiveDocument (Document document)throws Exception{
+		if (ServerConstants.STORAGE_TYPE == 1){
+			return retreiveDocumentFromFolder(document);
+		}
+		else{
 		DocumentRevision documentRevision = null;
 		DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId());
 		documentRevision = DocumentRevisionDAO.getInstance().readDocumentRevisionById(document.getDocumentId(),document.getRevisionId()); 
@@ -197,6 +239,7 @@ public class DocumentManager {
 			e.printStackTrace();
 		}
 		return documentRevision;
+		}
 	}
 
 	/**

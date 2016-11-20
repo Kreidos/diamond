@@ -18,6 +18,7 @@
  */
 package kreidos.diamond.model.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,15 +41,15 @@ import kreidos.diamond.model.vo.DocumentRevision;
 public class DocumentRevisionDAO {
 	private Logger kLogger = Logger.getLogger(this.getClass().getPackage().getName());
 
-	private final String SQL_INSERT_DOCUMENTREVISION="INSERT INTO DOCUMENTREVISIONS (DOCUMENTID,REVISIONID,SOFFSET,LENGTH)VALUES(?,?,?,?)";
+	private final String SQL_INSERT_DOCUMENTREVISION="INSERT INTO DOCUMENTREVISIONS (DOCUMENTID,REVISIONID,SOFFSET,LENGTH,PATH)VALUES(?,?,?,?,?)";
 	
-	private final String SQL_UPDATE_DOCUMENTREVISION="UPDATE DOCUMENTREVISIONS SET DOCUMENTID = ?,REVISIONID =?,SOFFSET=?,LENGTH=? WHERE DOCUMENTID=? AND REVISIONID=?";
+	private final String SQL_UPDATE_DOCUMENTREVISION="UPDATE DOCUMENTREVISIONS SET DOCUMENTID = ?,REVISIONID =?,SOFFSET=?,LENGTH=?,PATH=? WHERE DOCUMENTID=? AND REVISIONID=?";
 	
 	private final String SQL_DELETE_DOCUMENTREVISION="DELETE FROM DOCUMENTREVISIONS WHERE DOCUMENTID=? AND REVISIONID=?";
 	private final String SQL_DELETE_DOCUMENTREVISIONBYID="DELETE FROM DOCUMENTREVISIONS WHERE DOCUMENTID=?";
 	
-	private final String SQL_SELECT_DOCUMENTREVISIONBYID="SELECT DOCUMENTID,REVISIONID,SOFFSET,LENGTH FROM DOCUMENTREVISIONS  WHERE DOCUMENTID=? AND REVISIONID=?";
-	private final String SQL_SELECT_DOCUMENTREVISIONS="SELECT DOCUMENTID,REVISIONID,SOFFSET,LENGTH FROM DOCUMENTREVISIONS  WHERE DOCUMENTID=?";
+	private final String SQL_SELECT_DOCUMENTREVISIONBYID="SELECT DOCUMENTID,REVISIONID,SOFFSET,LENGTH,PATH FROM DOCUMENTREVISIONS  WHERE DOCUMENTID=? AND REVISIONID=?";
+	private final String SQL_SELECT_DOCUMENTREVISIONS="SELECT DOCUMENTID,REVISIONID,SOFFSET,LENGTH,PATH FROM DOCUMENTREVISIONS  WHERE DOCUMENTID=?";
 	
 	private static DocumentRevisionDAO _instance; 
 	
@@ -76,7 +77,8 @@ public class DocumentRevisionDAO {
 		psInsert.setInt(i++,documentRevision.getDocumentId());
 		psInsert.setString(i++,documentRevision.getRevisionId());
 		psInsert.setInt(i++,documentRevision.getOffset());
-		psInsert.setInt(i++,documentRevision.getLength());		
+		psInsert.setInt(i++,documentRevision.getLength());
+		psInsert.setString(i++,documentRevision.getDocumentFile().getPath()); //Folder storage support, Kreidos 2016
 
 		int recCount = psInsert.executeUpdate();
 		
@@ -102,7 +104,7 @@ public class DocumentRevisionDAO {
 		psUpdate.setString(i++,documentRevision.getRevisionId());
 		psUpdate.setInt(i++,documentRevision.getOffset());
 		psUpdate.setInt(i++,documentRevision.getLength());		
-
+		psUpdate.setString(i++, documentRevision.getDocumentFile().getPath());
 		psUpdate.setInt(i++,documentRevision.getDocumentId());
 		psUpdate.setString(i++,documentRevision.getRevisionId());
 		
@@ -186,6 +188,7 @@ public class DocumentRevisionDAO {
 			result.setRevisionId(rs.getString("REVISIONID"));
 			result.setOffset(rs.getInt("SOFFSET"));
 			result.setLength(rs.getInt("LENGTH"));
+			result.setDocumentFile(new File(rs.getString("PATH")));
 		}
 		rs.close();
 		psSelect.close();
@@ -211,6 +214,7 @@ public class DocumentRevisionDAO {
 				documentRevision.setRevisionId(rs.getString("REVISIONID"));
 				documentRevision.setOffset(rs.getInt("SOFFSET"));
 				documentRevision.setLength(rs.getInt("LENGTH"));
+				documentRevision.setDocumentFile(new File(rs.getString("PATH")));
 				
 				result.add(documentRevision);
 			}

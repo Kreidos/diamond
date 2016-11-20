@@ -177,8 +177,17 @@ public class DMSServer {
 			stat.execute("ALTER TABLE DOCUMENTS ADD COLUMN FILENAME VARCHAR (256)");
 			databaseConnection.commit();
 		}
+		try{
+			stat.execute("SELECT PATH FROM DOCUMENTREVISIONS");
+		}catch(Exception e){
+			kLogger.info("Database Error: PATH entry not found in REVISONS database, creating...");
+			stat.execute("ALTER TABLE DOCUMENTREVISIONS ADD COLUMN PATH VARCHAR (256)");
+			databaseConnection.commit();
+		}
 		databaseConnection.close();
 		kLogger.info("Database Check complete.");
+		
+		
 	}
 	
 	private void adjustDocumentCount(){

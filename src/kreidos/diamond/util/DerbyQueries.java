@@ -111,7 +111,8 @@ public class DerbyQueries extends ListResourceBundle{
 				" DOCUMENTID INTEGER NOT NULL," +
 				" REVISIONID VARCHAR(50) NOT NULL," +
 				" SOFFSET INT ," +
-				" LENGTH INT " +
+				" LENGTH INT ," +
+				" PATH VARCHAR(256) " +
 				")"
 			},
 			
