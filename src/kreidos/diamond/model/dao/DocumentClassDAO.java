@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.RevisionManager;
 import kreidos.diamond.model.TableManager;
 import kreidos.diamond.model.vo.CheckedOutDocument;
@@ -177,20 +178,22 @@ public class DocumentClassDAO {
 
 	public void deleteDocumentClass(DocumentClass documentClass) throws Exception{
 		kLogger.fine("Deleting document class : name=" + documentClass.getClassName());		
-		ArrayList<Document> documentList = DocumentDAO.getInstance().readDocuments("SELECT * FROM DOCUMENTS WHERE CLASSID ="+documentClass.getClassId());
-
-		for(Document document : documentList){		
-			RevisionManager revisionManager=new RevisionManager();
-			revisionManager.deleteRevisionRecord(document.getDocumentId());
-
-			CheckedOutDocument checkedOutDocument = CheckedOutDocumentDAO.getInstance().readCheckedOutDocument(document.getDocumentId(), document.getRevisionId());
-			if(checkedOutDocument.getDocumentId()!=0){
-				CheckedOutDocumentDAO.getInstance().deleteCheckedOutDocument(checkedOutDocument);
+		
+		if(! PropertiesManager.getInstance().getPropertyValue("storage").equals("folder")){
+			ArrayList<Document> documentList = DocumentDAO.getInstance().readDocuments("SELECT * FROM DOCUMENTS WHERE CLASSID ="+documentClass.getClassId());
+	
+			for(Document document : documentList){		
+				RevisionManager revisionManager=new RevisionManager();
+				revisionManager.deleteRevisionRecord(document.getDocumentId());
+	
+				CheckedOutDocument checkedOutDocument = CheckedOutDocumentDAO.getInstance().readCheckedOutDocument(document.getDocumentId(), document.getRevisionId());
+				if(checkedOutDocument.getDocumentId()!=0){
+					CheckedOutDocumentDAO.getInstance().deleteCheckedOutDocument(checkedOutDocument);
+				}			
+				DocumentNoteDAO.getInstance().deleteJournalNoteByDocumentId(document.getDocumentId());
+				DocumentDAO.getInstance().deleteDocument(document);
 			}			
-			DocumentNoteDAO.getInstance().deleteJournalNoteByDocumentId(document.getDocumentId());
-			DocumentDAO.getInstance().deleteDocument(document);
-		}			
-
+		}
 		deleteIndexDefinitions(documentClass.getIndexId());	
 
 		TableManager tableManager = new TableManager();

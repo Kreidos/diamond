@@ -18,18 +18,24 @@
 
 package kreidos.diamond.web.action.cpanel;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.constants.ServerConstants;
 import kreidos.diamond.model.AuditLogManager;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.dao.DocumentClassDAO;
 import kreidos.diamond.model.vo.AuditLogRecord;
 import kreidos.diamond.model.vo.DocumentClass;
 import kreidos.diamond.model.vo.User;
 import kreidos.diamond.web.action.Action;
 import kreidos.diamond.web.view.WebView;
+
+import org.apache.commons.io.FileUtils;
 
 
 /**
@@ -53,7 +59,14 @@ public class DeleteDocumentClassAction implements Action {
 				request.setAttribute(HTTPConstants.REQUEST_ERROR, "Invalid document class");
 				return (new ManageDocumentClassesAction().execute(request, response));
 			}
+			
+			if(PropertiesManager.getInstance().getPropertyValue("storage").equals("folder")){
+				String classFolder = ServerConstants.DATA_DIR + ServerConstants.SEPARATOR + documentClass.getClassName(); 
+				FileUtils.deleteDirectory(new File(classFolder));
+			}
+
 			DocumentClassDAO.getInstance().deleteDocumentClass(documentClass);
+			
 			AuditLogManager.log(new AuditLogRecord(
 					documentClass.getClassId(),
 					AuditLogRecord.OBJECT_DOCUMENTCLASS,
