@@ -19,6 +19,7 @@ package kreidos.diamond.model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
@@ -53,6 +54,7 @@ import org.apache.commons.io.FileUtils;
  */
 
 public class DocumentManager {
+	private PropertiesManager properties = PropertiesManager.getInstance();
 	private Logger kLogger = Logger.getLogger(this.getClass().getPackage().getName());
 	public DocumentManager() {}
 
@@ -95,8 +97,8 @@ public class DocumentManager {
 			DocumentClassDAO.getInstance().increaseActiveDocumentCount(documentClass);
 			documentRevision.setDocumentId(document.getDocumentId()); //set the document id in document revision
 		}
-		
-		if(ServerConstants.STORAGE_TYPE == 1){ //Folder File System Support Kreidos 2016
+
+		if(properties.getPropertyValue("storage").equalsIgnoreCase("folder")){ //Folder File System Support Kreidos 2016
 			DocumentManager docMan = new DocumentManager();
 			documentRevision.setDocumentFile( docMan.storeDocumentFileInFolder(documentRevision, documentClass) );
 		}else{
@@ -126,23 +128,28 @@ public class DocumentManager {
 		return destFile;
 	}
 	
-	/**
-	 * Stores files in Folders rather than database
-	 * @author Kreidos
-	 * @since Diamond 1.2
-	 * @param document
-	 * @return
-	 */
-	public DocumentRevision retreiveDocumentFromFolder(Document document){
-		File filePath = null;
+	private DocumentRevision retreiveDocumentFromFolder(Document document){
 		DocumentRevision documentRevision = null;
 		try {
 			documentRevision = DocumentRevisionDAO.getInstance().readDocumentRevisionById(document.getDocumentId(), document.getRevisionId());
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		return documentRevision;
 	}
+	
+	public static void deleteDocumentFromFolder(Document document){
+		String separator = ServerConstants.SEPARATOR;
+		String folder = ServerConstants.DATA_DIR + separator;
+		try {
+		folder += DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId()).getClassName() + separator + document.getDocumentId();
+			FileUtils.deleteDirectory(new File(folder));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 	private int storeDocumentFileInDatabase(DocumentRevision documentRevision,DocumentClass documentClass)throws Exception{
 		return storeOthers(documentRevision,documentClass);
@@ -197,49 +204,52 @@ public class DocumentManager {
 	}
 
 	public DocumentRevision retreiveDocument (Document document)throws Exception{
-		if (ServerConstants.STORAGE_TYPE == 1){
-			return retreiveDocumentFromFolder(document);
+		DocumentRevision documentRevision = null;
+		
+		//		Check if Folder-based storage is enabled.
+		if (properties.getPropertyValue("storage").equalsIgnoreCase("folder")){
+			documentRevision = retreiveDocumentFromFolder(document);
 		}
 		else{
-		DocumentRevision documentRevision = null;
-		DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId());
-		documentRevision = DocumentRevisionDAO.getInstance().readDocumentRevisionById(document.getDocumentId(),document.getRevisionId()); 
-		if(documentRevision == null) return documentRevision;
-
-		ResultSet resultSet = null;
-		Connection connection = ConnectionPoolManager.getInstance().getConnection();
-		String sqlStat = "SELECT DATA FROM " + documentClass.getDataTableName() + " WHERE DATAID= ?";
-		PreparedStatement  psSelect = connection.prepareStatement(sqlStat);
-
-		try {
-			psSelect.setInt(1, documentRevision.getOffset());
-			resultSet = psSelect.executeQuery();
-			if(resultSet.next()){
-				InputStream inputStream = resultSet.getBinaryStream(1);
-				String basePath = System.getProperty("java.io.tmpdir") ;
-				if ( !(basePath.endsWith("/") || basePath.endsWith("\\")) ){
-					basePath +=  System.getProperty("file.separator");
+			DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId()); 
+			documentRevision = DocumentRevisionDAO.getInstance().readDocumentRevisionById(document.getDocumentId(),document.getRevisionId());
+			if(documentRevision == null) return documentRevision;
+	
+			ResultSet resultSet = null;
+			Connection connection = ConnectionPoolManager.getInstance().getConnection();
+			String sqlStat = "SELECT DATA FROM " + documentClass.getDataTableName() + " WHERE DATAID= ?";
+			PreparedStatement  psSelect = connection.prepareStatement(sqlStat);
+	
+			try {
+				psSelect.setInt(1, documentRevision.getOffset());
+				resultSet = psSelect.executeQuery();
+				if(resultSet.next()){
+					InputStream inputStream = resultSet.getBinaryStream(1);
+					String basePath = System.getProperty("java.io.tmpdir") ;
+					if ( !(basePath.endsWith("/") || basePath.endsWith("\\")) ){
+						basePath +=  System.getProperty("file.separator");
+					}
+					File documentFile = new File(basePath + document.getFullFilename() );
+					OutputStream out=new FileOutputStream(documentFile);
+					byte buf[]=new byte[1024];
+					int len;
+					while((len=inputStream.read(buf))>0){
+						out.write(buf,0,len);
+					}
+					out.close();
+					inputStream.close();
+					documentRevision.setDocumentFile(documentFile);
 				}
-				File documentFile = new File(basePath + document.getFullFilename() );
-				OutputStream out=new FileOutputStream(documentFile);
-				byte buf[]=new byte[1024];
-				int len;
-				while((len=inputStream.read(buf))>0){
-					out.write(buf,0,len);
-				}
-				out.close();
-				inputStream.close();
-				documentRevision.setDocumentFile(documentFile);
+				resultSet.close();
+				psSelect.close();
+				connection.close();
+			}catch (Exception e) {
+				kLogger.severe("Unable to read record in data table");
+				e.printStackTrace();
 			}
-			resultSet.close();
-			psSelect.close();
-			connection.close();
-		}catch (Exception e) {
-			kLogger.severe("Unable to read record in data table");
-			e.printStackTrace();
 		}
 		return documentRevision;
-		}
+		
 	}
 
 	/**

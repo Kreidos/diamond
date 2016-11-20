@@ -28,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.logging.Logger;
 
 import kreidos.diamond.model.ConnectionPoolManager;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.vo.Document;
 import kreidos.diamond.model.vo.DocumentRevision;
 import kreidos.diamond.model.vo.Hit;
@@ -136,11 +137,12 @@ public class DocumentDAO {
 	public void deleteDocument(Document document)throws Exception{
 		kLogger.fine("Deleting document : id= " + document.getDocumentId());
 
-		for(DocumentRevision documentRevision : DocumentRevisionDAO.getInstance().readDocumentRevisionsById(document.getDocumentId())){
-			documentRevision.setClassId(document.getClassId());
-			DocumentRevisionDAO.getInstance().deleteDocumentRevision(documentRevision);
+		if(PropertiesManager.getInstance().getPropertyValue("storage")!="folder"){
+			for(DocumentRevision documentRevision : DocumentRevisionDAO.getInstance().readDocumentRevisionsById(document.getDocumentId())){
+				documentRevision.setClassId(document.getClassId());
+				DocumentRevisionDAO.getInstance().deleteDocumentRevision(documentRevision);
+			}
 		}
-
 		Connection connection = ConnectionPoolManager.getInstance().getConnection();
 
 		PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_DOCUMENT);

@@ -8,7 +8,7 @@ import java.util.Properties;
 /**
  * @author Kreidos
  * @since Diamond 1.1
- * Configuration file support added 2016 in Diamond v1.1
+ *
  * This class manages the properties file and its values.
  */
 
@@ -27,11 +27,21 @@ public class PropertiesManager {
 			ref = new PropertiesManager();
 		return ref;
 	}
-	
+	/**
+	 * Gets the property's value from the .properties file
+	 * @param property
+	 * @return
+	 */
 	public String getPropertyValue(String property){
 		return properties.getProperty(property);
 	}
 	
+	/**
+	 * Sets a property's value in the .properties file
+	 * Changes are written out immediately.
+	 * @param Property
+	 * @param value
+	 */
 	public void setPropertyValue(String Property, String value){
 		properties.setProperty(Property, value);
 		writePropertiesFile();
@@ -66,5 +76,6 @@ public class PropertiesManager {
 	
 	private void getDefaults(){
 			properties.setProperty("httpport", "8080");
+			properties.setProperty("storage", "folder");
 	}
 }

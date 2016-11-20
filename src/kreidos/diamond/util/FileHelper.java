@@ -1,5 +1,6 @@
 package kreidos.diamond.util;
 
+import kreidos.diamond.constants.ServerConstants;
 import kreidos.diamond.model.dao.DocumentDAO;
 import kreidos.diamond.model.vo.DocumentClass;
 import kreidos.diamond.model.vo.DocumentRevision;
@@ -13,13 +14,13 @@ import kreidos.diamond.model.vo.DocumentRevision;
  */
 
 public class FileHelper {
-	private static String separator = System.getProperty("file.separator");
-	private static final String DATA_DIR = "data" + separator + "filestore";
+	private static String dataDir = ServerConstants.DATA_DIR;
+	private static String separator = ServerConstants.SEPARATOR;
 	
 	public static String getFilePath(DocumentRevision documentRevision, DocumentClass documentclass){
 		String filePath = null;
 		try {
-			 filePath = DATA_DIR + separator + documentclass.getClassName() + separator + documentRevision.getDocumentId()
+			 filePath = dataDir + separator + documentclass.getClassName() + separator + documentRevision.getDocumentId()
 					+ separator + documentRevision.getRevisionId() + separator + DocumentDAO.getInstance().readDocumentById(documentRevision.getDocumentId()).getFullFilename();
 		} catch (Exception e) {
 			e.printStackTrace();

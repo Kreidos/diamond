@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 
 import kreidos.diamond.model.ConnectionPoolManager;
 import kreidos.diamond.model.IndexRecordManager;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.vo.DocumentRevision;
 
 
@@ -188,7 +189,8 @@ public class DocumentRevisionDAO {
 			result.setRevisionId(rs.getString("REVISIONID"));
 			result.setOffset(rs.getInt("SOFFSET"));
 			result.setLength(rs.getInt("LENGTH"));
-			result.setDocumentFile(new File(rs.getString("PATH")));
+			if (PropertiesManager.getInstance().getPropertyValue("storage")=="folder")
+				result.setDocumentFile(new File(rs.getString("PATH")));
 		}
 		rs.close();
 		psSelect.close();
@@ -214,7 +216,8 @@ public class DocumentRevisionDAO {
 				documentRevision.setRevisionId(rs.getString("REVISIONID"));
 				documentRevision.setOffset(rs.getInt("SOFFSET"));
 				documentRevision.setLength(rs.getInt("LENGTH"));
-				documentRevision.setDocumentFile(new File(rs.getString("PATH")));
+				if (PropertiesManager.getInstance().getPropertyValue("storage")=="folder")
+					documentRevision.setDocumentFile(new File(rs.getString("PATH")));
 				
 				result.add(documentRevision);
 			}

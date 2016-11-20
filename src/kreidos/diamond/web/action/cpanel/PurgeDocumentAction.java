@@ -24,6 +24,8 @@ import javax.servlet.http.HttpSession;
 
 import kreidos.diamond.constants.HTTPConstants;
 import kreidos.diamond.model.AuditLogManager;
+import kreidos.diamond.model.DocumentManager;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.dao.DocumentClassDAO;
 import kreidos.diamond.model.dao.DocumentDAO;
 import kreidos.diamond.model.vo.AuditLogRecord;
@@ -56,7 +58,11 @@ public class PurgeDocumentAction implements Action {
 			request.setAttribute(HTTPConstants.REQUEST_ERROR, "Invalid document");
 			return (new UnauthorizedOrInvalidAccessView(request, response));
 		}
+		
+		if(PropertiesManager.getInstance().getPropertyValue("storage") == "folder")
+			DocumentManager.deleteDocumentFromFolder(document);
 		DocumentDAO.getInstance().deleteDocument(document);
+		
 		DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(document.getClassId());
 		DocumentClassDAO.getInstance().decreaseDocumentCount(documentClass);
 		

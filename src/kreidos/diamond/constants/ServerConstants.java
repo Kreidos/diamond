@@ -26,9 +26,11 @@ package kreidos.diamond.constants;
  */
 public class ServerConstants {
 	
-	public static final int STORAGE_TYPE = 1;
 	public static final String SERVER_VERSION = "1.1";
 	public static final String SERVER_NAME = "Diamond DMS";
+	
+	public static final String SEPARATOR = System.getProperty("file.separator");
+	public static final String DATA_DIR = "data" + SEPARATOR + "filestore";
 	
 	public static final String KRYSTAL_DATABASE="KRYSTALCE";
 	public static final String KRYSTAL_DATABASEOWNER="KRYSTALDBO";
