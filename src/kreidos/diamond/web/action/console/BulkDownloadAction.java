@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -107,6 +108,8 @@ public class BulkDownloadAction implements Action {
 			FileOutputStream dest = new FileOutputStream(zipFile);
 			@SuppressWarnings("resource")
 			ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
+			ArrayList<String> fileList = new ArrayList<>();
+			
 			for(String documentID  : documentids){
 				int documentId = 0;
 				try{
@@ -122,7 +125,11 @@ public class BulkDownloadAction implements Action {
 				File downloadFile = new File(documentRevision.getDocumentFile().getAbsolutePath());
 				FileInputStream fis = new FileInputStream(downloadFile);
 				origin = new BufferedInputStream(fis, BUFFER);
-				ZipEntry entry = new ZipEntry(document.getFullFilename());
+				String entryName = document.getFullFilename();
+				if(fileList.contains(entryName))
+					entryName = new StringBuilder(entryName).insert(entryName.lastIndexOf("."), "_" + document.getDocumentId()).toString();
+				fileList.add(entryName);
+				ZipEntry entry = new ZipEntry(entryName);
 				out.putNextEntry(entry);
 				int count;
 				while((count = origin.read(data, 0, BUFFER)) != -1) {
