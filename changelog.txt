@@ -1,0 +1,19 @@
+Diamond DMS Changelog
+
+1.1.1
+ -Fixes document's data not being purged from database
+      after being deleted from the recycle bin.
+
+1.1
+ -Adds filename support.
+ -Adds config file for alternate http ports.
+ -Cosmetic fixes.
+
+1.0 - Initial Release
+ -File storage limit removed.
+ -Broken Bulk downloads feature fixed.
+ -Searching by date using "between" fixed.
+ -Removed same-author check for notes.
+ -Cosmetic changes.
+ -Default administrator account email changed.
+ -Pre-fork backdoor plugged.

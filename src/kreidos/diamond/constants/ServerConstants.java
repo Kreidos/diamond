@@ -25,7 +25,7 @@ package kreidos.diamond.constants;
  * @comments This class keeps all constants reqiured for server 
  */
 public class ServerConstants {
-	public static final String SERVER_VERSION = "1.1";
+	public static final String SERVER_VERSION = "1.1.1";
 	public static final String SERVER_NAME = "Diamond DMS";
 	
 	public static final String KRYSTAL_DATABASE="KRYSTALCE";
