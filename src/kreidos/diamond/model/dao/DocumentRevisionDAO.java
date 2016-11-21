@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 
 import kreidos.diamond.model.ConnectionPoolManager;
 import kreidos.diamond.model.IndexRecordManager;
+import kreidos.diamond.model.vo.DocumentClass;
 import kreidos.diamond.model.vo.DocumentRevision;
 
 
@@ -127,6 +128,7 @@ public class DocumentRevisionDAO {
 
 		indexRecordManager.deleteIndexRecord(documentRevision.getClassId(),documentRevision.getDocumentId(),documentRevision.getRevisionId());
 		//dataHandler.deleteDataRecord(documentRevision.getOffset());
+		DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(documentRevision.getClassId());
 		Connection connection = ConnectionPoolManager.getInstance().getConnection();
 		PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_DOCUMENTREVISION);
 		int i=1;
@@ -135,6 +137,7 @@ public class DocumentRevisionDAO {
 		int recCount = psDelete.executeUpdate();
 		
 		psDelete.close();
+		connection.createStatement().execute("DELETE FROM " + documentClass.getDataTableName() + " WHERE DATAID=" + documentRevision.getOffset());
 		connection.commit();
 		connection.close();
 		
