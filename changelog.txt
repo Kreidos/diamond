@@ -1,5 +1,12 @@
 Diamond DMS Changelog
 
+1.1.2
+ -Fixes bulkdownload breaking when 2 files have identical filenames.
+ -Added odometer config flag to dis/enable the odometer effect
+ -Adds dbcheck config flag. Will run a single database health
+      check on next run. This will clean old orphaned file entries
+      leftover from pre-1.1.1 databases.
+
 1.1.1
  -Fixes document's data not being purged from database
       after being deleted from the recycle bin.
