@@ -83,5 +83,6 @@ public class PropertiesManager {
 	private void getDefaults(){
 			properties.setProperty("httpport", "8080");
 			properties.setProperty("odometer", "true");
+			properties.setProperty("dbcheck", "false");
 	}
 }

@@ -41,6 +41,7 @@ import kreidos.diamond.model.vo.DocumentClass;
 import kreidos.diamond.model.vo.User;
 import kreidos.diamond.util.DerbyQueries;
 import kreidos.diamond.util.ExpiryProcessor;
+import kreidos.diamond.util.DBDoctor;
 import kreidos.diamond.web.WebServerManager;
 
 
@@ -72,6 +73,10 @@ public class DMSServer {
 			setEnvironment();
 			configureDataStore();
 			updateDatabase();		//Checks and updates obsolete DBs, Kreidos@github, 2016
+			if(properties.getPropertyValue("dbcheck").equalsIgnoreCase("true")){
+				DBDoctor.checkDatabase(); //Run database check.
+				properties.setPropertyValue("dbcheck", "false"); //only runs once.
+			}
 			startWebApplications();
 			updateLoginStatus();
 			adjustDocumentCount();
@@ -167,18 +172,18 @@ public class DMSServer {
 	}
 
 	public void updateDatabase() throws SQLException{ //Checks and updates obsolete DBs. Kreidos@github 2016
-		kLogger.info("Checking Database...");
+		kLogger.info("Checking database for updates...");
 		Connection databaseConnection = ConnectionPoolManager.getInstance().getConnection();
 		Statement stat = databaseConnection.createStatement();
 		try{
 			stat.execute("SELECT FILENAME FROM DOCUMENTS");
 		}catch(Exception e){
-			kLogger.info("Database Error: FILENAMES entry not found in database, creating...");
+			kLogger.info("Update Required: FILENAMES entry not found in database, creating...");
 			stat.execute("ALTER TABLE DOCUMENTS ADD COLUMN FILENAME VARCHAR (256)");
 			databaseConnection.commit();
 		}
 		databaseConnection.close();
-		kLogger.info("Database Check complete.");
+		kLogger.info("Database update complete.");
 	}
 	
 	private void adjustDocumentCount(){
