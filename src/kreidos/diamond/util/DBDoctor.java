@@ -1,11 +1,13 @@
 package kreidos.diamond.util;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import kreidos.diamond.constants.ServerConstants;
 import kreidos.diamond.model.ConnectionPoolManager;
 import kreidos.diamond.model.dao.DocumentClassDAO;
 import kreidos.diamond.model.dao.DocumentDAO;
@@ -19,11 +21,13 @@ import kreidos.diamond.model.vo.DocumentClass;
  */
 public class DBDoctor {
 	
+	private static ArrayList<String> systemTables = null;
 
 	public static void checkDatabase(){
 		System.out.println("DB Doctor: Database check requested.");
 		try {
 			cleanOrphans();
+			shrinkTables();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.exit(9);
@@ -107,6 +111,45 @@ public class DBDoctor {
 
 	}
 
+	private static void shrinkTables() throws SQLException{
+		System.out.println("Compressing tables...");
+		getSystemTables();
+		ArrayList<DocumentClass> allDocumentClasses = DocumentClassDAO.getInstance().readDocumentClasses("");
+		Connection connection = ConnectionPoolManager.getInstance().getConnection();
+		for(DocumentClass documentClass: allDocumentClasses){
+			CallableStatement psShrink = connection.prepareCall("CALL SYSCS_UTIL.SYSCS_COMPRESS_TABLE('" + ServerConstants.KRYSTAL_DATABASEOWNER + "', '" + documentClass.getDataTableName() + "', 1)");
+			psShrink.execute();
+			psShrink.close();
+			connection.commit();
+		}
+		for(String table: systemTables){
+			CallableStatement psShrink = connection.prepareCall("CALL SYSCS_UTIL.SYSCS_COMPRESS_TABLE('" + ServerConstants.KRYSTAL_DATABASEOWNER + "', '" + table + "', 1)");
+			psShrink.execute();
+			psShrink.close();
+			connection.commit();
+		}
+		
+		connection.close();
+	}
+	
+	private static ArrayList<String> getSystemTables(){
+		if (systemTables == null) {
+			systemTables = new ArrayList<>();
+			systemTables.add("AUDITLOGS");
+			systemTables.add("BOOKMARKS");
+			systemTables.add("CHECKOUT");
+			systemTables.add("DOCUMENTCLASSES");
+			systemTables.add("DOCUMENTS");
+			systemTables.add("DOCUMENTREVISIONS");
+			systemTables.add("INDEXES");
+			systemTables.add("NOTES");
+			systemTables.add("PASSWORDHISTORY");
+			systemTables.add("PERMISSIONS");
+			systemTables.add("REVISIONHISTORY");
+			systemTables.add("USERS");
+		}
+		return systemTables;
+	}
 
 
 }
