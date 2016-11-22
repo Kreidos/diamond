@@ -73,10 +73,7 @@ public class DMSServer {
 			setEnvironment();
 			configureDataStore();
 			updateDatabase();		//Checks and updates obsolete DBs, Kreidos@github, 2016
-			if(properties.getPropertyValue("dbcheck").equalsIgnoreCase("true")){
-				DBDoctor.checkDatabase(); //Run database check.
-				properties.setPropertyValue("dbcheck", "false"); //only runs once.
-			}
+			checkDatabase();
 			startWebApplications();
 			updateLoginStatus();
 			adjustDocumentCount();
@@ -184,6 +181,13 @@ public class DMSServer {
 		}
 		databaseConnection.close();
 		kLogger.info("Database update complete.");
+	}
+	
+	private void checkDatabase(){
+		if(properties.getPropertyValue("dbcheck").equalsIgnoreCase("true")){
+			DBDoctor.checkDatabase(); //Run database check.
+			properties.setPropertyValue("dbcheck", "false"); //only runs once.
+		}
 	}
 	
 	private void adjustDocumentCount(){
