@@ -22,17 +22,17 @@
 	
 	<target name="makeWebJar" depends="build">
 		<jar destfile="${serverlibdir}/${webjarname}" basedir="./bin"
-			includes="com/primeleaf/krystal/web/**" />
+			includes="kreidos/diamond/web/**" />
 	</target>
 
 	<target name="makeModelJar" depends="makeWebJar">
 		<jar destfile="${serverlibdir}/${modeljarname}" basedir="./bin"
-			includes="com/primeleaf/krystal/model/**" />
+			includes="kreidos/diamond/model/**" />
 	</target>
 
 	<target name="makeServerJar" depends="makeModelJar">
 		<jar destfile="${serverlibdir}/${basename}" basedir="./bin"
-			excludes="com/primeleaf/krystal/web/**,com/primeleaf/krystal/model//**" />
+			excludes="kreidos/diamond/web/**,kreidos/diamond/model//**" />
 	</target>
 
 	<target name="copy-resources" depends="makeServerJar">
