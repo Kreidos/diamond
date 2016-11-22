@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kreidos.diamond.constants.HTTPConstants;
+import kreidos.diamond.model.PropertiesManager;
 import kreidos.diamond.model.vo.AuditLogRecord;
 import kreidos.diamond.model.vo.Bookmark;
 import kreidos.diamond.model.vo.CheckedOutDocument;
@@ -114,10 +115,14 @@ public class HomeView extends WebView {
 
 					out.println("<div class=\"col-xs-12 col-sm-2 text-right\">");
 					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\" title=\"Total Documents\">");
-					out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">0</h3>");
-					if(documentCount > 0 ){
-						out.println("<script>setTimeout(function(){$('.totaldocs"+documentClass.getClassId()+"').html('"+documentCount+"');},1000);</script>");
-					}
+					//Optional odometer effect
+					if(PropertiesManager.getInstance().getPropertyValue("odometer").equalsIgnoreCase("true")){
+						out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">0</h3>");
+						if(documentCount > 0 ){
+							out.println("<script>setTimeout(function(){$('.totaldocs"+documentClass.getClassId()+"').html('"+documentCount+"');},1000);</script>");
+						}
+					}else
+						out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">" + documentCount + "</h3>");
 					out.println("<p><h6>Total Documents</h6></p>");
 					out.println("</a>");
 					out.println("</div>");
