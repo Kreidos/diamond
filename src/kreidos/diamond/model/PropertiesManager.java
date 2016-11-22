@@ -15,25 +15,41 @@ import java.util.Properties;
 public class PropertiesManager {
 	private String configFile = "diamond.properties";
 	private Properties properties = new Properties();
-	private static PropertiesManager ref = null;
+	private static PropertiesManager instance = null;
 	
 	private PropertiesManager(){ //constructor
 		getDefaults();
 		readPropertiesFile();
 	}
-	
+
 	public static PropertiesManager getInstance(){
-		if(ref == null)
-			ref = new PropertiesManager();
-		return ref;
+		if(instance == null)
+			instance = new PropertiesManager();
+		return instance;
 	}
+
+	/**
+	 * Returns the value associated with the supplied property.
+	 * @author Kreidos
+	 * @since Diamond 1.1
+	 * @param property
+	 * @return value
+	 */
 	
 	public String getPropertyValue(String property){
 		return properties.getProperty(property);
 	}
 	
-	public void setPropertyValue(String Property, String value){
-		properties.setProperty(Property, value);
+	/**
+	 * Sets the value of the supplied property.
+	 * Settings are written out to the configuration file immediately.
+	 * @author Kreidos
+	 * @since Diamond 1.1
+	 * @param property
+	 * @param value
+	 */
+	public void setPropertyValue(String property, String value){
+		properties.setProperty(property, value);
 		writePropertiesFile();
 	}
 	
