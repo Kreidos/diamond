@@ -72,6 +72,7 @@ public class DBDoctor {
 		while(rs.next()){
 			dataIds.add(rs.getInt("DATAID"));
 		}
+		rs.close();
 		ps.close();
 		connection.close();
 		return dataIds;		
@@ -98,6 +99,7 @@ public class DBDoctor {
 				break;
 			}
 		}
+		rs.close();
 		psQuery.close();
 		if(!match){ //no match. Delete the entry.
 			PreparedStatement psDelete = connection.prepareStatement("DELETE FROM " + dataTableName + " WHERE DATAID=" + dataId);

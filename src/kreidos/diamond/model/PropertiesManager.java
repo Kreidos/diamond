@@ -3,6 +3,7 @@ package kreidos.diamond.model;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -54,27 +55,19 @@ public class PropertiesManager {
 	}
 	
 	private void readPropertiesFile(){
-		FileReader file = null;
-		
-		try{ 
-			file = new FileReader(configFile);
+		try(FileReader file = new FileReader(configFile)){ 
 			properties.load(file);
-			file.close();
 		}catch(FileNotFoundException e){
 			System.out.println(configFile + " not found: Creating...");
 			writePropertiesFile();
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(IOException e){
+			System.out.println(e.getMessage());
 		}	
 	}
 	
 	private void writePropertiesFile(){
-		FileWriter file = null;
-		
-		try{
-			file = new FileWriter(configFile);
+		try(FileWriter file = new FileWriter(configFile)){
 			properties.store(file, "Diamond DMS Configuration File");
-			file.close();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

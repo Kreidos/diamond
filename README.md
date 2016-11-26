@@ -5,8 +5,8 @@ Diamond DMS is a document management system forked from Krystal DMS and licensed
 * No storage, usage, or user count limits.
 * Original filenames are preserved.
 * Server port can be changed in a config file.
-* Major bugs squashed & broken features fixed.
-* Security fixes (Notably, backdoor removal.)
+* Major bugs squashed & broken features repaired.
+* Security fixes
 
 **Usage:**
 * Extract zip.

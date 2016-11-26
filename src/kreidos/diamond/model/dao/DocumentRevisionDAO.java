@@ -130,14 +130,20 @@ public class DocumentRevisionDAO {
 		//dataHandler.deleteDataRecord(documentRevision.getOffset());
 		DocumentClass documentClass = DocumentClassDAO.getInstance().readDocumentClassById(documentRevision.getClassId());
 		Connection connection = ConnectionPoolManager.getInstance().getConnection();
+		
 		PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_DOCUMENTREVISION);
 		int i=1;
 		psDelete.setInt(i++,documentRevision.getDocumentId());
 		psDelete.setString(i++,documentRevision.getRevisionId());
 		int recCount = psDelete.executeUpdate();
-		
 		psDelete.close();
-		connection.createStatement().execute("DELETE FROM " + documentClass.getDataTableName() + " WHERE DATAID=" + documentRevision.getOffset());
+		
+		PreparedStatement psPurge = connection.prepareStatement("DELETE FROM "
+				+ documentClass.getDataTableName() + " WHERE DATAID="
+				+ documentRevision.getOffset());
+		psPurge.execute();
+		psPurge.close();
+		
 		connection.commit();
 		connection.close();
 		
