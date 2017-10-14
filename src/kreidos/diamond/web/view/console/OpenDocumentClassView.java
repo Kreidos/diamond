@@ -125,7 +125,7 @@ public class OpenDocumentClassView extends WebView {
 		out.println("</div>");//panel-heading
 		
 		if(documentHitlist.size() > 0 ){
-			out.println("<form action=\"/console/bulkdelete\" method=\"post\" name=\"frmBulkAction\" id=\"frmBulkAction\" class=\"form-horizontal\">");
+			out.println("<form method=\"post\" name=\"frmBulkAction\" id=\"frmBulkAction\" class=\"form-horizontal\">");
 			out.println("<div class=\"table-responsive\">");
 			out.println("<table class=\"table table-hover table-striped table-condensed\" style=\"font-size:12px;\">");
 			out.println("<thead>");

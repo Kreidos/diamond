@@ -177,7 +177,8 @@ $(document).ready(function() {
 	    if ($("#frmBulkAction").valid()) {
 	    	BootstrapDialog.confirm("Are you sure, you want to delete these documents?", function(result){
 	            if(result) {
-	            	$("#frmBulkAction").submit();
+	                $("#frmBulkAction").attr('action','/console/bulkdelete');
+	                $("#frmBulkAction").submit();
 	            }
 	    	});
 	    }
