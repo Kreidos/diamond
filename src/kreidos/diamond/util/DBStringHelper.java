@@ -98,7 +98,7 @@ public class DBStringHelper {
 	public static java.sql.Date getSQLDate(String dateString){
 		Date date = new Date();
 		try{
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			date = sdf.parse(dateString);
 		}catch(Exception e){
 			e.printStackTrace();
