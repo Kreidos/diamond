@@ -105,6 +105,7 @@ public class MobileDocumentViewerAction implements Action {
 
 			// Initialize retrieval operation
 			DocumentManager documentManager = new DocumentManager();
+			document.setRevisionId(documentRevision.getRevisionId());
 			documentRevision = documentManager.retreiveDocument(document);
 
 			ServletContext servletContext = request.getServletContext();
