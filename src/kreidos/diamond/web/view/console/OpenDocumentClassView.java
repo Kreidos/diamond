@@ -209,13 +209,13 @@ public class OpenDocumentClassView extends WebView {
 					out.println("<td>"+StringEscapeUtils.escapeHtml4(value)+"</td>");
 				}
 				if(loggedInUser.getMetaPreferences().isFileSizeVisible()){
-					out.println("<td>"+StringHelper.formatSizeText(hit.fileLength)+"</td>");
+					out.println("<td class=\"text-center\">"+StringHelper.formatSizeText(hit.fileLength)+"</td>");
 				}
 				if(loggedInUser.getMetaPreferences().isCreatedVisible()){
-					out.println("<td>"+StringHelper.formatDate(hit.created)+"</td>");
+					out.println("<td class=\"text-center\">"+StringHelper.formatDate(hit.created)+"</td>");
 				}
 				if(loggedInUser.getMetaPreferences().isModifiedVisible()){
-					out.println("<td>"+StringHelper.formatDate(hit.modified)+"</td>");
+					out.println("<td class=\"text-center\">"+StringHelper.formatDate(hit.modified)+"</td>");
 				}
 				if(loggedInUser.getMetaPreferences().isExpiryOnVisible()){
 					out.println("<td class=\"text-center\">");
