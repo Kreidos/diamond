@@ -1,5 +1,13 @@
 Diamond DMS Changelog
 
+1.1.3
+ -Adds option to purged all trashed files at once.
+ -File expiry is now processed correctly; expired documents will be 
+      moved to trash on the day of expiry.
+ -Searching by date functions again.
+ -Web-based viewer can now show revisions older than current.
+ -Minor fixes.
+
 1.1.2
  -Fixes bulkdownload breaking when 2 files have identical filenames.
  -Added odometer config flag to dis/enable the odometer effect
