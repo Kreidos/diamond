@@ -654,7 +654,7 @@ public class StringHelper {
 
 		Date date = new Date();
 		try{
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			date = sdf.parse(dateString);
 		}catch(Exception e){
 			e.printStackTrace();

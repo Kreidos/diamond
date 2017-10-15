@@ -62,7 +62,7 @@ public class ExpiryProcessor  extends TimerTask {
 				cal.set(Calendar.SECOND,0);
 				java.sql.Date today = new java.sql.Date(cal.getTimeInMillis());
 
-				String sqlSelectDocuments =  "SELECT * FROM DOCUMENTS WHERE CLASSID = "+ documentClass.getClassId() +" AND STATUS IN('" +Hit.STATUS_AVAILABLE + "' ,' " + Hit.STATUS_LOCKED+ "')  AND  EXPIRY  <='" + today + "'";  
+				String sqlSelectDocuments =  "SELECT * FROM DOCUMENTS WHERE CLASSID = "+ documentClass.getClassId() +" AND STATUS IN('" +Hit.STATUS_AVAILABLE + "' ,' " + Hit.STATUS_LOCKED+ "')  AND  EXPIRY  <='" + today.toString() + " 00:00:00" + "'";  
 				expiringDocuments = DocumentDAO.getInstance().readDocuments(sqlSelectDocuments);
 				kLogger.info(expiringDocuments.size() + " documents expiring in document class " + documentClass.getClassDescription());
 				expiryCount = 0;
