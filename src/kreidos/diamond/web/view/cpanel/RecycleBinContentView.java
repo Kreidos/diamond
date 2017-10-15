@@ -89,6 +89,7 @@ public class RecycleBinContentView extends WebView {
 		try {
 			ArrayList<Document> documentList = (ArrayList<Document>) request.getAttribute("DOCUMENTLIST");
 			DocumentClass documentClass = (DocumentClass) request.getAttribute("DOCUMENTCLASS");
+			String type = (String) request.getAttribute("TYPE");
 			out.println("<div class=\"panel panel-default\">");
 			out.println("<div class=\"panel-heading\">");
 			
@@ -138,6 +139,9 @@ public class RecycleBinContentView extends WebView {
 					out.println("</tr>");
 				}// for
 				out.println("</tbody>");
+				out.println("<tfoot><tr><td colspan=5/><td class=\"text-center\"><a href=\""+HTTPConstants.BASEURL+"/cpanel/bulkpurgedocument?classid="+documentClass.getClassId()+
+						"&type="+type.toUpperCase()+"\" class=\"confirm\" title=\"Are you sure you want to permanently delete all documents?\">Delete All</a>"+
+						"</td></tr></tfoot>");
 				out.println("</table>");
 				out.println("</div>");
 				

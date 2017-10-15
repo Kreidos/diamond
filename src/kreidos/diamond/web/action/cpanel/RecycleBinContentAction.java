@@ -62,6 +62,7 @@ public class RecycleBinContentAction implements Action {
 		}
 		request.setAttribute("DOCUMENTCLASS", documentClass);
 		request.setAttribute("DOCUMENTLIST", documents);
+		request.setAttribute("TYPE", type);
 		return (new RecycleBinContentView(request, response));
 	}
 }

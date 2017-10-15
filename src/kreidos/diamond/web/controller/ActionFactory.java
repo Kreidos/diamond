@@ -60,6 +60,7 @@ import kreidos.diamond.web.action.console.ShareDocumentAction;
 import kreidos.diamond.web.action.console.UpdateProfilePictureAction;
 import kreidos.diamond.web.action.console.UploadProgressAction;
 import kreidos.diamond.web.action.console.ViewDocumentAction;
+import kreidos.diamond.web.action.cpanel.BulkPurgeDocumentAction;
 import kreidos.diamond.web.action.cpanel.CancelCheckoutAdminAction;
 import kreidos.diamond.web.action.cpanel.ChangeUserPasswordAction;
 import kreidos.diamond.web.action.cpanel.ClassIndexesAction;
@@ -181,6 +182,7 @@ public class ActionFactory {
 			actions.put("/cpanel/recyclebincontent", new RecycleBinContentAction());
 			actions.put("/cpanel/restoredocument", new RestoreDocumentAction());
 			actions.put("/cpanel/purgedocument", new PurgeDocumentAction());
+			actions.put("/cpanel/bulkpurgedocument", new BulkPurgeDocumentAction());
 		} 
 		return instance; 
 	}
